@@ -3,13 +3,7 @@ import { Download, Briefcase, GraduationCap, Award } from 'lucide-react';
 
 const Resume = () => {
   const handleDownload = () => {
-    const resumeUrl = 'https://drive.google.com/uc?export=download&id=1WQNUKjXspXlqr3drmmczQgc4JRquVuTh';
-    const link = document.createElement('a');
-    link.href = resumeUrl;
-    link.download = 'Rohit_Zore_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    window.open('https://drive.google.com/file/d/1WQNUKjXspXlqr3drmmczQgc4JRquVuTh/view?usp=sharing', '_blank');
   };
 
   const internships = [
