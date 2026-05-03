@@ -1,134 +1,81 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
+import { Shield, Code2, Terminal, Database, Cpu, Lock, Globe, Server } from 'lucide-react';
 
 const Skills = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
-      { threshold: 0.15 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
-
-  const categories = [
+  const skillGroups = [
     {
-      title: 'Security & Networks',
-      emoji: '🛡️',
-      gradient: 'from-emerald-500 to-teal-500',
-      skills: [
-        { name: 'Networking Fundamentals', level: 85 },
-        { name: 'Linux & Windows Security', level: 80 },
-        { name: 'Active Directory', level: 75 },
-        { name: 'Wireshark / Firewalls', level: 78 },
-        { name: 'Password Security / JWT', level: 82 },
-      ],
+      title: 'Security',
+      icon: Shield,
+      skills: ['Nmap', 'Wireshark', 'Metasploit', 'Active Directory', 'JWT', 'OAuth 2.0'],
+      color: 'bg-primary/10 text-primary',
     },
     {
-      title: 'Languages & Frameworks',
-      emoji: '⚡',
-      gradient: 'from-violet-500 to-purple-500',
-      skills: [
-        { name: 'Python', level: 80 },
-        { name: 'JavaScript / HTML / CSS', level: 88 },
-        { name: 'React Native (Expo)', level: 78 },
-        { name: 'Java (Basics)', level: 60 },
-        { name: 'Supabase / REST APIs', level: 80 },
-      ],
+      title: 'Languages',
+      icon: Terminal,
+      skills: ['Python', 'JavaScript', 'HTML/CSS', 'Java', 'SQL'],
+      color: 'bg-secondary/10 text-secondary',
     },
     {
-      title: 'Tools & DevOps',
-      emoji: '🔧',
-      gradient: 'from-rose-500 to-pink-500',
-      skills: [
-        { name: 'Git & GitHub', level: 88 },
-        { name: 'MySQL', level: 75 },
-        { name: 'OAuth 2.0 / BLE', level: 76 },
-        { name: 'Vercel Deployment', level: 80 },
-        { name: 'Nmap / Pen Testing', level: 70 },
-      ],
+      title: 'Frameworks',
+      icon: Code2,
+      skills: ['React Native', 'Expo', 'React', 'Vite', 'Express'],
+      color: 'bg-accent/10 text-accent',
     },
-  ];
-
-  const softSkills = [
-    '🧩 Problem-Solving',
-    '🔄 Adaptability',
-    '⏰ Time Management',
-    '💬 Communication',
-    '🤝 Team Collaboration',
+    {
+      title: 'Tools',
+      icon: Cpu,
+      skills: ['Git', 'Docker', 'Vercel', 'Supabase', 'Razorpay', 'BLE'],
+      color: 'bg-foreground/10 text-foreground',
+    },
   ];
 
   return (
-    <section id="skills" ref={sectionRef} className="relative py-24 overflow-hidden px-6">
-      <div className="blob w-[400px] h-[400px] top-[20%] left-[-8%]" style={{ background: 'var(--c-accent-3)', animationDelay: '2s' }} />
-
-      <div className="relative z-10 max-w-6xl mx-auto">
-        <p className="section-label">Skills</p>
-        <h2 className="section-heading">
+    <section id="skills" className="py-32 px-6 relative">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="section-title">
           My <span className="gradient-text">Arsenal</span>
         </h2>
-        <p className="section-desc">
-          Technologies and tools I use to build and break things.
+        <p className="text-xl text-muted-foreground mb-16 max-w-2xl">
+          A curated selection of technologies I use to architect secure and scalable digital solutions.
         </p>
 
-        {/* Skill categories */}
-        <div className="grid md:grid-cols-3 gap-6 mb-10">
-          {categories.map((cat, catIdx) => (
-            <div key={cat.title} className="card p-6">
-              {/* Header */}
-              <div className="flex items-center gap-3 mb-6">
-                <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${cat.gradient} flex items-center justify-center text-lg shadow-md`}>
-                  {cat.emoji}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {skillGroups.map((group) => (
+            <div key={group.title} className="bento-item !rounded-[2rem] flex flex-col p-6">
+              <div className="flex items-center gap-3 mb-8">
+                <div className={`w-12 h-12 rounded-2xl ${group.color} flex items-center justify-center`}>
+                  <group.icon size={24} />
                 </div>
-                <h3 className="font-bold font-['Outfit']" style={{ color: 'var(--c-text)' }}>
-                  {cat.title}
-                </h3>
+                <h3 className="text-xl font-bold">{group.title}</h3>
               </div>
 
-              {/* Skill bars */}
-              <div className="space-y-4">
-                {cat.skills.map((skill, skillIdx) => (
-                  <div key={skill.name}>
-                    <div className="flex justify-between items-center mb-1.5">
-                      <span className="text-sm" style={{ color: 'var(--c-text-muted)' }}>{skill.name}</span>
-                      <span className="text-xs font-bold" style={{ color: 'var(--c-accent)' }}>{skill.level}%</span>
-                    </div>
-                    <div className="skill-bar-track">
-                      <div
-                        className={`skill-bar-fill bg-gradient-to-r ${cat.gradient}`}
-                        style={{
-                          width: isVisible ? `${skill.level}%` : '0%',
-                          transitionDelay: `${catIdx * 0.2 + skillIdx * 0.1}s`,
-                        }}
-                      />
-                    </div>
-                  </div>
+              <div className="flex flex-wrap gap-2">
+                {group.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-4 py-2 rounded-xl border bg-card/50 text-xs font-bold transition-all duration-300 hover:border-primary hover:text-primary cursor-default"
+                  >
+                    {skill}
+                  </span>
                 ))}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Soft skills */}
-        <div className="card p-6 text-center">
-          <h3 className="font-bold font-['Outfit'] mb-4 text-lg" style={{ color: 'var(--c-text)' }}>
-            Soft Skills
-          </h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {softSkills.map((skill) => (
-              <span
-                key={skill}
-                className="px-5 py-2.5 rounded-2xl text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md cursor-default"
-                style={{
-                  background: 'var(--c-surface-2)',
-                  border: '1px solid var(--c-border)',
-                  color: 'var(--c-text-muted)',
-                }}
-              >
-                {skill}
-              </span>
+        {/* Soft Skills Section */}
+        <div className="mt-12 bento-item !rounded-[2rem] p-8 md:p-12 flex flex-col md:flex-row items-center gap-12">
+          <div className="flex-1 text-center md:text-left">
+            <h3 className="text-3xl font-bold mb-4">Beyond Technical</h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Cybersecurity is as much about people and processes as it is about tools. I bring leadership, communication, and a problem-solving mindset to every team.
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4 flex-1">
+            {['Leadership', 'Communication', 'Adaptability', 'Team Player', 'Critical Thinking'].map((soft) => (
+              <div key={soft} className="px-6 py-3 rounded-full bg-muted font-bold text-sm tracking-tight transition-all duration-300 hover:scale-105">
+                {soft}
+              </div>
             ))}
           </div>
         </div>

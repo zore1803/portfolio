@@ -10,7 +10,10 @@ import Footer from '../components/Footer';
 
 const Index = () => {
   return (
-    <div className="min-h-screen relative" style={{ background: 'var(--c-bg)', color: 'var(--c-text)' }}>
+    <div className="min-h-screen selection:bg-primary/20 selection:text-primary">
+      {/* Global decorative elements */}
+      <div className="grainy-bg" />
+
       <Navbar />
       <Hero />
       <About />
