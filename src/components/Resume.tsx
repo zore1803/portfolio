@@ -3,7 +3,7 @@ import { Download, Briefcase, GraduationCap, Award } from 'lucide-react';
 
 const Resume = () => {
   const handleDownload = () => {
-    const resumeUrl = 'https://drive.google.com/uc?export=download&id=129qKo-KuYi15RSArpwOGq2FM1z7us06f';
+    const resumeUrl = 'https://drive.google.com/uc?export=download&id=1WQNUKjXspXlqr3drmmczQgc4JRquVuTh';
     const link = document.createElement('a');
     link.href = resumeUrl;
     link.download = 'Rohit_Zore_Resume.pdf';
