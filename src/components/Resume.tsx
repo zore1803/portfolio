@@ -3,7 +3,7 @@ import { Download, Briefcase, GraduationCap, Award, Eye } from 'lucide-react';
 
 const Resume = () => {
   const handleView = () => {
-    window.open('https://drive.google.com/file/d/1WQNUKjXspXlqr3drmmczQgc4JRquVuTh/view?usp=sharing', '_blank');
+    window.open('/Rohit_Resume.pdf', '_blank');
   };
 
   const handleDownload = () => {
