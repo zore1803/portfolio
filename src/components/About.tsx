@@ -39,7 +39,7 @@ const About = () => {
 
         <div className="grid lg:grid-cols-12 gap-6 items-stretch">
           {/* Main Bio Card */}
-          <div className="lg:col-span-7 card p-8 md:p-10 flex flex-col justify-center relative overflow-hidden group">
+          <div className="lg:col-span-7 card p-8 md:p-10 flex flex-col justify-center relative overflow-hidden group reveal reveal-up">
             <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700" />
             
             <h3 className="text-2xl font-bold mb-6 font-['Outfit'] flex items-center gap-3">
@@ -75,7 +75,7 @@ const About = () => {
           {/* Side Column - Bento Style */}
           <div className="lg:col-span-5 grid grid-cols-1 gap-6">
             {/* Highlight 1 */}
-            <div className="card p-6 bg-gradient-to-br from-emerald-500/10 to-transparent border-emerald-500/20 group hover:border-emerald-500/40 transition-all duration-300">
+            <div className="card p-6 bg-gradient-to-br from-emerald-500/10 to-transparent border-emerald-500/20 group hover:border-emerald-500/40 transition-all duration-300 reveal reveal-up stagger-1">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-2xl bg-emerald-500 flex items-center justify-center shadow-[0_0_20px_rgba(16,185,129,0.3)] group-hover:rotate-6 transition-transform">
                   <Shield size={22} className="text-white" />
@@ -88,7 +88,7 @@ const About = () => {
             </div>
 
             {/* Highlight 2 */}
-            <div className="card p-6 bg-gradient-to-br from-violet-500/10 to-transparent border-violet-500/20 group hover:border-violet-500/40 transition-all duration-300">
+            <div className="card p-6 bg-gradient-to-br from-violet-500/10 to-transparent border-violet-500/20 group hover:border-violet-500/40 transition-all duration-300 reveal reveal-up stagger-2">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-2xl bg-violet-500 flex items-center justify-center shadow-[0_0_20px_rgba(139,92,246,0.3)] group-hover:-rotate-6 transition-transform">
                   <Code2 size={22} className="text-white" />
@@ -101,7 +101,7 @@ const About = () => {
             </div>
 
             {/* Education Summary */}
-            <div className="card p-6 flex items-center justify-between group">
+            <div className="card p-6 flex items-center justify-between group reveal reveal-up stagger-3">
               <div className="flex items-center gap-4">
                 <GraduationCap className="text-rose-500 group-hover:scale-110 transition-transform" />
                 <div>
@@ -117,7 +117,7 @@ const About = () => {
         </div>
 
         {/* Motivational Quote - Now as a wide banner */}
-        <div className="mt-12 card p-8 text-center relative overflow-hidden group">
+        <div className="mt-12 card p-8 text-center relative overflow-hidden group reveal reveal-scale stagger-4">
           <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 via-violet-500/5 to-rose-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           <div className="relative z-10">
             <span className="text-4xl block mb-4 animate-float">🔐</span>

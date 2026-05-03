@@ -55,36 +55,36 @@ const Hero = () => {
         </div>
 
         {/* Heading */}
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 font-['Outfit'] leading-[1.05]">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 font-['Outfit'] leading-[1.05] reveal reveal-up">
           <span style={{ color: 'var(--c-text)' }}>Hey, I'm </span>
           <span className="gradient-text">Rohit</span>
         </h1>
 
         {/* Subtitle */}
-        <p className="text-xl md:text-2xl font-medium mb-4" style={{ color: 'var(--c-text-muted)' }}>
+        <p className="text-xl md:text-2xl font-medium mb-4 reveal reveal-up stagger-1" style={{ color: 'var(--c-text-muted)' }}>
           Cyber Security Enthusiast & Full-Stack Developer
         </p>
 
         {/* Description */}
-        <p className="text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed" style={{ color: 'var(--c-text-muted)' }}>
+        <p className="text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed reveal reveal-up stagger-2" style={{ color: 'var(--c-text-muted)' }}>
           I build <span className="font-semibold" style={{ color: 'var(--c-accent)' }}>secure systems</span>, break into them (legally),
           and craft beautiful web experiences. Ranked{' '}
           <span className="font-bold" style={{ color: 'var(--c-accent-2)' }}>Top 5%</span> on TryHackMe.
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-          <button className="btn-primary" onClick={() => scrollToSection('projects')}>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 reveal reveal-up stagger-3">
+          <button className="btn-primary hover-lift" onClick={() => scrollToSection('projects')}>
             <Sparkles size={16} />
             View My Work
           </button>
-          <button className="btn-outline" onClick={() => scrollToSection('contact')}>
+          <button className="btn-outline hover-lift" onClick={() => scrollToSection('contact')}>
             Let's Connect
           </button>
         </div>
 
         {/* Social links */}
-        <div className="flex justify-center gap-3 mb-16">
+        <div className="flex justify-center gap-3 mb-16 reveal reveal-up stagger-4">
           {[
             { href: 'https://github.com/zore1803', icon: Github, label: 'GitHub' },
             { href: 'https://linkedin.com/in/rzore430', icon: Linkedin, label: 'LinkedIn' },
@@ -95,7 +95,7 @@ const Hero = () => {
               href={s.href}
               target={s.href.startsWith('mailto') ? undefined : '_blank'}
               rel="noopener noreferrer"
-              className="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              className="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-emerald-500/50"
               style={{
                 background: 'var(--c-surface)',
                 border: '1px solid var(--c-border)',

@@ -71,10 +71,11 @@ const Projects = () => {
         </p>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((project) => (
+          {projects.map((project, idx) => (
             <div
               key={project.id}
-              className={`card overflow-hidden group ${project.featured ? 'md:col-span-2' : ''}`}
+              className={`card overflow-hidden group reveal reveal-up ${project.featured ? 'md:col-span-2' : ''}`}
+              style={{ transitionDelay: `${idx * 0.1}s` }}
               onMouseEnter={() => setHoveredId(project.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
