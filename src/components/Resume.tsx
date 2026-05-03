@@ -2,8 +2,17 @@ import React from 'react';
 import { Download, Briefcase, GraduationCap, Award } from 'lucide-react';
 
 const Resume = () => {
-  const handleDownload = () => {
+  const handleView = () => {
     window.open('https://drive.google.com/file/d/1WQNUKjXspXlqr3drmmczQgc4JRquVuTh/view?usp=sharing', '_blank');
+  };
+
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/Rohit_Resume.pdf';
+    link.download = 'Rohit_Zore_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const internships = [
@@ -72,7 +81,10 @@ const Resume = () => {
         <h2 className="section-heading">
           Experience & <span className="gradient-text">Education</span>
         </h2>
-        <div className="flex justify-center mb-12">
+        <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+          <button className="btn-outline" onClick={handleView}>
+            View Resume
+          </button>
           <button className="btn-primary" onClick={handleDownload}>
             <Download size={16} />
             Download Resume
