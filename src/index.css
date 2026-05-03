@@ -97,6 +97,15 @@
     transition: background-color 0.4s ease, color 0.4s ease;
   }
 
+  @media (min-width: 1024px) {
+    html, body {
+      cursor: none;
+    }
+    a, button, [role="button"] {
+      cursor: none !important;
+    }
+  }
+
   html {
     scroll-behavior: smooth;
   }
