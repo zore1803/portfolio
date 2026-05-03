@@ -1,5 +1,5 @@
 import React from 'react';
-import { Download, Briefcase, GraduationCap, Award } from 'lucide-react';
+import { Download, Briefcase, GraduationCap, Award, Eye } from 'lucide-react';
 
 const Resume = () => {
   const handleView = () => {
@@ -81,12 +81,13 @@ const Resume = () => {
         <h2 className="section-heading">
           Experience & <span className="gradient-text">Education</span>
         </h2>
-        <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-          <button className="btn-outline" onClick={handleView}>
+        <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12 reveal reveal-up stagger-1">
+          <button className="btn-primary hover-lift flex items-center justify-center gap-2" onClick={handleView}>
+            <Eye size={18} />
             View Resume
           </button>
-          <button className="btn-primary" onClick={handleDownload}>
-            <Download size={16} />
+          <button className="btn-primary hover-lift flex items-center justify-center gap-2" onClick={handleDownload}>
+            <Download size={18} />
             Download Resume
           </button>
         </div>
