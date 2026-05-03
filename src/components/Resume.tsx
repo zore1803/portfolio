@@ -1,11 +1,8 @@
-
 import React from 'react';
-import { Download, FileText, Award, Users } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Download, Briefcase, GraduationCap, Award } from 'lucide-react';
 
 const Resume = () => {
   const handleDownload = () => {
-    // Replace this URL with your actual resume PDF link
     const resumeUrl = 'https://drive.google.com/uc?export=download&id=129qKo-KuYi15RSArpwOGq2FM1z7us06f';
     const link = document.createElement('a');
     link.href = resumeUrl;
@@ -15,122 +12,117 @@ const Resume = () => {
     document.body.removeChild(link);
   };
 
-  const workExperience = [
+  const internships = [
     {
-      position: "AI Agent Architect",
-      company: "IBM SkillsBuild",
-      period: "Jul 2025 - Present",
-      type: "Internship",
-      location: "Virtual",
-      description: "Participated in IBM's AI Summer Program focused on building AI Agent Architect skills. Gained hands-on exposure through orientation, PBL approach, and real-world AI applications."
+      role: 'Cyber Security Intern',
+      company: 'Elevate Labs',
+      period: 'Jan 2026 – Apr 2026',
+      details: [
+        'Performed vulnerability checks; built a keylogger and vulnerability scanner.',
+        'Hands-on exposure to Wireshark, firewalls, and password strength analysis.',
+      ],
+      gradient: 'from-emerald-500 to-teal-500',
     },
     {
-      position: "Cyber Security",
-      company: "Elevated Labs",
-      period: "Jun 2025 - Present",
-      type: "Internship",
-      location: "Virtual",
-      description: "Pursuing a 30-day internship focused on daily tech tasks and project-based learning. Going to build two major projects, submitted tasks via GitHub, and developed skills in debugging, documentation, and interview readiness."
-    }
+      role: 'Cyber Security Learner',
+      company: 'TryHackMe (Virtual)',
+      period: 'Nov 2025 – Jan 2026',
+      details: [
+        'Completed Cyber Security 101 (45+ hrs) & CompTIA Pentest+ (32+ hrs).',
+        'Covered networking, Linux, and Active Directory fundamentals.',
+      ],
+      gradient: 'from-violet-500 to-purple-500',
+    },
   ];
 
   const certifications = [
-    {
-      title: "Data Analytics",
-      provider: "Deloitte Australia",
-      date: "Jul 2025",
-      type: "Virtual",
-      description: "Completed Deloitte's Data Analytics Job Simulation via Forage. Worked on data classification, dashboard creation (Tableau), and forensic data analysis using Excel.",
-      certificateUrl: "https://drive.google.com/file/d/19kvsz_WAeQU-jq6IqUpHU8F5yufKLi6e/view?usp=drive_link"
-    },
-    {
-      title: "GCSJ Cloud Computing Program",
-      provider: "Global Cloud Skills Jam",
-      date: "2025",
-      type: "Virtual",
-      description: "☁️ Proud to have completed the GCSJ Cloud Computing Program! This journey strengthened my understanding of: ✅ Cloud architecture fundamentals ✅ Storage, compute, and networking concepts ✅ Scalable cloud solutions using modern technologies. This certification adds a valuable cloud dimension to my data and tech skillset!",
-      certificateUrl: "https://drive.google.com/file/d/16hVfSbtV4tkaAS9hsEVZRe9K0USgvJ-b/view?usp=drive_link"
-    }
+    { name: 'Jr. Penetration Tester', provider: 'TryHackMe', emoji: '🎯' },
+    { name: 'CompTIA Pentest+', provider: 'TryHackMe', emoji: '🔓' },
+    { name: 'Cyber Security 101', provider: 'TryHackMe', emoji: '🛡️' },
+    { name: 'Pre Security', provider: 'TryHackMe', emoji: '🔒' },
+    { name: 'AI Agent Architect', provider: 'IBM', emoji: '🤖' },
+    { name: 'Generative AI', provider: 'GDSC', emoji: '✨' },
+    { name: 'ADCAG', provider: 'Shree Institute', emoji: '📜' },
   ];
 
   const education = [
     {
-      degree: "Bachelor of Engineering (B.E)",
-      school: "Padmabhushan Vasantdada Patil Pratishthan's College Of Engineering",
-      period: "2023 - 2027",
-      description: "CGPA: 7.50/10. Focusing on Computer Engineering with emphasis on web development and software engineering."
+      degree: 'B.E. in AI & Data Science',
+      school: 'Vasantdada Patil College of Engineering, Mumbai',
+      period: '2023 – 2027',
+      score: 'CGPA: 7.27',
+      gradient: 'from-emerald-500 to-teal-500',
     },
     {
-      degree: "Senior Secondary (XII) - Science",
-      school: "D. G. Ruparel College Of Arts, Science And Commerce",
-      period: "2023",
-      description: "Maharashtra State Board Of Secondary And Higher Secondary Education. Percentage: 54.00%"
+      degree: 'HSC (Science – PCM)',
+      school: 'D.G. Ruparel College, Mumbai',
+      period: '2021 – 2023',
+      score: '53.5%',
+      gradient: 'from-violet-500 to-purple-500',
     },
     {
-      degree: "Secondary (X)",
-      school: "Little Stars English High School",
-      period: "2021",
-      description: "Maharashtra State Board Of Secondary And Higher Secondary Education. Percentage: 86.00%"
-    }
-  ];
-
-  const activities = [
-    "Member of AISAC's Technical Team",
-    "Member of the Student Council",
-    "Organized and participated in workshops & events",
-    "Member of the University Volleyball Team"
-  ];
-
-  const achievements = [
-    "Played Volleyball for University",
-    "Completed Google Gen AI",
-    "Completed Prompt Design in Vertex AI"
+      degree: 'SSC',
+      school: 'Little Star English High School, Mumbai',
+      period: '2020 – 2021',
+      score: '86.4%',
+      gradient: 'from-rose-500 to-pink-500',
+    },
   ];
 
   return (
-    <section id="resume" className="py-20 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Resume
-          </h2>
-          <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full mb-6"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            My educational journey and achievements
-          </p>
-          
-          <Button 
-            size="lg" 
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
-            onClick={handleDownload}
-          >
-            <Download size={20} className="mr-3" />
+    <section id="experience" className="relative py-24 overflow-hidden px-6">
+      <div className="blob w-[350px] h-[350px] top-[5%] right-[-5%]" style={{ background: 'var(--c-accent)', animationDelay: '1s' }} />
+
+      <div className="relative z-10 max-w-6xl mx-auto">
+        <p className="section-label">Resume</p>
+        <h2 className="section-heading">
+          Experience & <span className="gradient-text">Education</span>
+        </h2>
+        <div className="flex justify-center mb-12">
+          <button className="btn-primary" onClick={handleDownload}>
+            <Download size={16} />
             Download Resume
-          </Button>
+          </button>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Work Experience */}
+        <div className="grid lg:grid-cols-2 gap-8 mb-12">
+          {/* Internships */}
           <div>
-            <h3 className="text-3xl font-bold text-gray-900 mb-8 flex items-center">
-              <FileText className="mr-3 text-blue-600" size={32} />
-              Work Experience
-            </h3>
-            <div className="space-y-8">
-              {workExperience.map((work, index) => (
-                <div 
-                  key={index}
-                  className="relative pl-8 border-l-2 border-blue-200 hover:border-blue-400 transition-colors duration-300"
-                >
-                  <div className="absolute w-4 h-4 bg-blue-600 rounded-full -left-2 top-2"></div>
-                  <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                    <h4 className="text-xl font-bold text-gray-900 mb-1">{work.position} • {work.type}</h4>
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
-                      <span className="text-blue-600 font-semibold">{work.company}</span>
-                      <span className="text-gray-500 text-sm">{work.period}</span>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-md">
+                <Briefcase size={18} className="text-white" />
+              </div>
+              <h3 className="text-xl font-bold font-['Outfit']" style={{ color: 'var(--c-text)' }}>
+                Internships & Training
+              </h3>
+            </div>
+
+            <div className="space-y-4">
+              {internships.map((intern, i) => (
+                <div key={i} className="card p-6 overflow-hidden relative">
+                  {/* Left accent bar */}
+                  <div className={`absolute top-0 left-0 w-1 h-full bg-gradient-to-b ${intern.gradient} rounded-full`} />
+
+                  <div className="pl-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
+                      <h4 className="font-bold font-['Outfit']" style={{ color: 'var(--c-text)' }}>{intern.role}</h4>
+                      <span className="text-xs px-3 py-1 rounded-full" style={{
+                        background: 'var(--c-surface-2)',
+                        color: 'var(--c-text-muted)',
+                        border: '1px solid var(--c-border)',
+                      }}>
+                        {intern.period}
+                      </span>
                     </div>
-                    <div className="text-gray-500 text-sm mb-3">{work.location}</div>
-                    <p className="text-gray-600 leading-relaxed">{work.description}</p>
+                    <p className="text-sm font-medium mb-3" style={{ color: 'var(--c-accent)' }}>{intern.company}</p>
+                    <ul className="space-y-2">
+                      {intern.details.map((d, j) => (
+                        <li key={j} className="flex items-start gap-2 text-sm" style={{ color: 'var(--c-text-muted)' }}>
+                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--c-accent)' }} />
+                          {d}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               ))}
@@ -139,24 +131,34 @@ const Resume = () => {
 
           {/* Education */}
           <div>
-            <h3 className="text-3xl font-bold text-gray-900 mb-8 flex items-center">
-              <FileText className="mr-3 text-blue-600" size={32} />
-              Education
-            </h3>
-            <div className="space-y-8">
-              {education.map((edu, index) => (
-                <div 
-                  key={index}
-                  className="relative pl-8 border-l-2 border-blue-200 hover:border-blue-400 transition-colors duration-300"
-                >
-                  <div className="absolute w-4 h-4 bg-blue-600 rounded-full -left-2 top-2"></div>
-                  <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                    <h4 className="text-xl font-bold text-gray-900 mb-1">{edu.degree}</h4>
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
-                      <span className="text-blue-600 font-semibold">{edu.school}</span>
-                      <span className="text-gray-500 text-sm">{edu.period}</span>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-500 flex items-center justify-center shadow-md">
+                <GraduationCap size={18} className="text-white" />
+              </div>
+              <h3 className="text-xl font-bold font-['Outfit']" style={{ color: 'var(--c-text)' }}>Education</h3>
+            </div>
+
+            <div className="space-y-4">
+              {education.map((edu, i) => (
+                <div key={i} className="card p-6 overflow-hidden relative">
+                  <div className={`absolute top-0 left-0 w-1 h-full bg-gradient-to-b ${edu.gradient} rounded-full`} />
+                  <div className="pl-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-1">
+                      <h4 className="font-bold font-['Outfit'] text-sm" style={{ color: 'var(--c-text)' }}>
+                        {edu.degree}
+                      </h4>
+                      <span className="text-xs px-3 py-1 rounded-full" style={{
+                        background: 'var(--c-surface-2)',
+                        color: 'var(--c-text-muted)',
+                        border: '1px solid var(--c-border)',
+                      }}>
+                        {edu.period}
+                      </span>
                     </div>
-                    <p className="text-gray-600 leading-relaxed">{edu.description}</p>
+                    <p className="text-xs mb-2" style={{ color: 'var(--c-text-muted)' }}>{edu.school}</p>
+                    <span className={`inline-flex px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r ${edu.gradient} text-white`}>
+                      {edu.score}
+                    </span>
                   </div>
                 </div>
               ))}
@@ -164,84 +166,26 @@ const Resume = () => {
           </div>
         </div>
 
-        {/* Certifications & Trainings */}
-        <div className="mt-16">
-          <h3 className="text-3xl font-bold text-gray-900 mb-8 flex items-center">
-            <Award className="mr-3 text-blue-600" size={32} />
-            Trainings / Certifications
-          </h3>
-          <div className="grid md:grid-cols-2 gap-8">
-            {certifications.map((cert, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                <h4 className="text-xl font-bold text-gray-900 mb-2">{cert.title}</h4>
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
-                  <span className="text-blue-600 font-semibold">{cert.provider}</span>
-                  <span className="text-gray-500 text-sm">{cert.date}</span>
-                </div>
-                <p className="text-gray-600 leading-relaxed mb-4">{cert.description}</p>
-                <div className="flex gap-3">
-                  <Button 
-                    size="sm" 
-                    variant="outline" 
-                    className="border-blue-600 text-blue-600 hover:bg-blue-50"
-                    asChild
-                  >
-                    <a href={cert.certificateUrl} target="_blank" rel="noopener noreferrer">
-                      <FileText size={16} className="mr-2" />
-                      View Certificate
-                    </a>
-                  </Button>
-                  <Button 
-                    size="sm" 
-                    className="bg-blue-600 hover:bg-blue-700 text-white"
-                    asChild
-                  >
-                    <a href={cert.certificateUrl.replace('/view?usp=drive_link', '/export?format=pdf')} target="_blank" rel="noopener noreferrer">
-                      <Download size={16} className="mr-2" />
-                      Download
-                    </a>
-                  </Button>
-                </div>
+        {/* Certifications */}
+        <div>
+          <div className="flex items-center gap-3 mb-6 justify-center">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center shadow-md">
+              <Award size={18} className="text-white" />
+            </div>
+            <h3 className="text-xl font-bold font-['Outfit']" style={{ color: 'var(--c-text)' }}>Certifications</h3>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+            {certifications.map((cert) => (
+              <div
+                key={cert.name}
+                className="card p-4 text-center group hover:scale-[1.02] cursor-default"
+              >
+                <div className="text-2xl mb-2 group-hover:scale-110 transition-transform duration-300">{cert.emoji}</div>
+                <div className="text-sm font-semibold" style={{ color: 'var(--c-text)' }}>{cert.name}</div>
+                <div className="text-xs mt-1" style={{ color: 'var(--c-text-muted)' }}>{cert.provider}</div>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Activities */}
-        <div className="grid lg:grid-cols-2 gap-12 mt-16">
-          <div>
-            <h3 className="text-3xl font-bold text-gray-900 mb-8 flex items-center">
-              <Users className="mr-3 text-blue-600" size={32} />
-              Activities
-            </h3>
-            <div className="space-y-8">
-              <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                <h4 className="text-xl font-bold text-gray-900 mb-4">Extra Curricular Activities</h4>
-                <ul className="space-y-3">
-                  {activities.map((activity, index) => (
-                    <li key={index} className="flex items-start">
-                      <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      <span className="text-gray-600">{activity}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                  <Award className="mr-2 text-blue-600" size={20} />
-                  Additional Details
-                </h4>
-                <ul className="space-y-3">
-                  {achievements.map((achievement, index) => (
-                    <li key={index} className="flex items-start">
-                      <span className="w-2 h-2 bg-green-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      <span className="text-gray-600">{achievement}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
           </div>
         </div>
       </div>

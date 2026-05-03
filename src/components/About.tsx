@@ -1,52 +1,132 @@
-
 import React from 'react';
+import { Shield, Code2, GraduationCap, MapPin, Trophy, Heart } from 'lucide-react';
 
 const About = () => {
+  const highlights = [
+    {
+      icon: Shield,
+      title: 'Security Mindset',
+      desc: 'Vulnerability checks, keyloggers, and pen-testing under mentor guidance at Elevate Labs.',
+      gradient: 'from-emerald-500 to-teal-500',
+    },
+    {
+      icon: Code2,
+      title: 'Full-Stack Builder',
+      desc: 'React Native, Supabase, OAuth 2.0, Razorpay — end-to-end application development.',
+      gradient: 'from-violet-500 to-purple-500',
+    },
+    {
+      icon: GraduationCap,
+      title: 'B.E. in AI & DS',
+      desc: 'Vasantdada Patil College of Engineering, Mumbai — CGPA: 7.27',
+      gradient: 'from-rose-500 to-pink-500',
+    },
+  ];
+
   return (
-    <section id="about" className="py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            About Me
-          </h2>
-          <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
-        </div>
-        
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-              Hello! I'm Rohit, a passionate Artificial Intelligence and Data Science student based in Mumbai.
-            </h3>
-            <p className="text-gray-600 leading-relaxed text-lg">
-              Currently pursuing Bachelor of Engineering (B.E) in AI & Data Science from Padmabhushan Vasantdada Patil Pratishthan's College Of Engineering (2023-2027) with a CGPA of 7.50/10. I specialize in web development and creating user-friendly platforms.
+    <section id="about" className="relative py-24 overflow-hidden px-6">
+      {/* Decorative blob */}
+      <div className="blob w-[400px] h-[400px] top-[10%] right-[-10%]" style={{ background: 'var(--c-accent)', animationDelay: '1s' }} />
+
+      <div className="relative z-10 max-w-6xl mx-auto">
+        <p className="section-label">About Me</p>
+        <h2 className="section-heading">
+          Passionate about <span className="gradient-text">security</span> & code
+        </h2>
+        <p className="section-desc">
+          I'm a cyber security fresher with a strong foundation in networking, system security, and full-stack development, based in Mumbai.
+        </p>
+
+        <div className="grid lg:grid-cols-2 gap-10 items-start">
+          {/* Left — Bio card */}
+          <div className="card p-8 space-y-5">
+            <p className="leading-relaxed" style={{ color: 'var(--c-text-muted)' }}>
+              Completed <strong style={{ color: 'var(--c-accent)' }}>Pre Security</strong> &{' '}
+              <strong style={{ color: 'var(--c-accent)' }}>Cyber Security 101</strong> on TryHackMe,
+              ranked <strong style={{ color: 'var(--c-accent-2)' }}>top 5%</strong> on the platform.
+              Keen interest in offensive and defensive security fundamentals.
             </p>
-            <p className="text-gray-600 leading-relaxed text-lg">
-              I'm passionate about artificial intelligence, data science, and building applications that make a difference. When I'm not coding, you can find me playing volleyball for my university team, participating in technical workshops, or contributing to student council activities.
+            <p className="leading-relaxed" style={{ color: 'var(--c-text-muted)' }}>
+              When not hacking or coding, you'll find me on the{' '}
+              <strong style={{ color: 'var(--c-accent)' }}>volleyball court</strong> playing for
+              my college team, serving as <strong style={{ color: 'var(--c-accent-2)' }}>Treasurer at CSI</strong>,
+              or contributing to student council activities.
             </p>
-            <div className="grid grid-cols-2 gap-4 pt-6">
-              <div>
-                <h4 className="font-semibold text-gray-900 mb-2">Education</h4>
-                <p className="text-blue-600 font-medium">B.E AI & Data Science</p>
-              </div>
-              <div>
-                <h4 className="font-semibold text-gray-900 mb-2">University</h4>
-                <p className="text-blue-600 font-medium">PVPPCOE</p>
+
+            {/* Quick info chips */}
+            <div className="flex flex-wrap gap-3 pt-2">
+              {[
+                { icon: MapPin, text: 'Mumbai, India' },
+                { icon: GraduationCap, text: 'B.E. AI & DS' },
+                { icon: Trophy, text: 'Top 5% THM' },
+                { icon: Heart, text: 'Volleyball' },
+              ].map((chip) => (
+                <div
+                  key={chip.text}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm"
+                  style={{
+                    background: 'var(--c-surface-2)',
+                    color: 'var(--c-text-muted)',
+                    border: '1px solid var(--c-border)',
+                  }}
+                >
+                  <chip.icon size={14} style={{ color: 'var(--c-accent)' }} />
+                  {chip.text}
+                </div>
+              ))}
+            </div>
+
+            {/* Languages */}
+            <div className="pt-2">
+              <p className="text-xs font-medium uppercase tracking-widest mb-2" style={{ color: 'var(--c-text-muted)' }}>
+                Languages
+              </p>
+              <div className="flex gap-2">
+                {['English', 'Marathi', 'Hindi'].map((lang) => (
+                  <span key={lang} className="tag">{lang}</span>
+                ))}
               </div>
             </div>
           </div>
-          
-          <div className="flex justify-center">
-            <div className="relative">
-              <div className="w-80 h-80 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 p-2">
-                <img 
-                  src="/lovable-uploads/dca1d829-b131-45a7-8d52-3cf6cd1550d2.png"
-                  alt="Rohit Zore"
-                  className="w-full h-full rounded-full object-cover shadow-xl"
-                />
+
+          {/* Right — Highlight cards */}
+          <div className="space-y-4">
+            {highlights.map((h, i) => (
+              <div
+                key={h.title}
+                className="card p-6 group"
+                style={{ animationDelay: `${i * 0.1}s` }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${h.gradient} flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    <h.icon size={22} className="text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold mb-1 font-['Outfit'] text-lg" style={{ color: 'var(--c-text)' }}>
+                      {h.title}
+                    </h4>
+                    <p className="text-sm leading-relaxed" style={{ color: 'var(--c-text-muted)' }}>
+                      {h.desc}
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="absolute -bottom-4 -right-4 bg-white rounded-full p-4 shadow-lg">
-                <div className="w-8 h-8 bg-green-500 rounded-full animate-pulse"></div>
-              </div>
+            ))}
+
+            {/* Fun decorative card */}
+            <div
+              className="card p-6 text-center"
+              style={{
+                background: 'linear-gradient(135deg, rgba(16,185,129,0.05), rgba(139,92,246,0.05))',
+              }}
+            >
+              <p className="text-4xl mb-2">🔐</p>
+              <p className="font-semibold font-['Outfit']" style={{ color: 'var(--c-text)' }}>
+                "Break it to secure it."
+              </p>
+              <p className="text-sm mt-1" style={{ color: 'var(--c-text-muted)' }}>
+                — My approach to cybersecurity
+              </p>
             </div>
           </div>
         </div>

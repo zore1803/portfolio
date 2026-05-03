@@ -1,122 +1,158 @@
-
-import React from 'react';
-import { ExternalLink, Github } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import React, { useState } from 'react';
+import { ExternalLink, Github, Lock, Globe, Shield, Search, ArrowUpRight } from 'lucide-react';
 
 const Projects = () => {
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
+
   const projects = [
     {
       id: 1,
-      title: "User Friendly Platform for Pandits and Customer",
-      description: "Built a web-based platform to connect Pandits with customers for religious services. The system includes user registration, service booking, and schedule management, offering a seamless and intuitive interface for both parties. Deployed on Vercel platform.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop",
-      tech: ["JavaScript", "HTML", "MySQL", "Git"],
-      github: "https://github.com/zore1803/guruji-pooja-seva-portal",
-      live: "https://guruji-pooja-seva-portal.vercel.app/",
-      period: "Jan 2025 - Jun 2025"
+      title: 'LOQIT',
+      subtitle: 'Anti-Theft Hardware Security Platform',
+      description:
+        'A BLE-powered security ecosystem creating a hardware-identity bond between handsets and devices. Secure OAuth 2.0 & JWT authentication, device-level integrity, and a Law Enforcement Command Center with GIS-based recovery.',
+      tech: ['React Native', 'Expo', 'Supabase', 'BLE 2.0', 'OAuth', 'JWT'],
+      github: 'https://github.com/zore1803',
+      period: 'Oct 2025 – Present',
+      gradient: 'from-emerald-500 to-teal-500',
+      icon: Lock,
+      featured: true,
     },
     {
       id: 2,
-      title: "Portfolio Website",
-      description: "A modern, responsive portfolio website showcasing projects and skills with smooth animations and optimal performance. Built with React and deployed using modern web technologies.",
-      image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=400&fit=crop",
-      tech: ["React", "JavaScript", "HTML", "Git"],
-      github: "https://github.com/zore1803/Portfolio",
-      live: "https://porfolio-rohit-1803.vercel.app/",
-      period: "2025"
+      title: 'E-Guruji',
+      subtitle: 'Pandit-Customer Booking Platform',
+      description:
+        'Web app for booking pujas and connecting users with priests. JWT authentication, Razorpay payment gateway, and admin panel for managing users, services, and bookings.',
+      tech: ['JavaScript', 'HTML', 'JWT', 'Razorpay', 'MySQL'],
+      github: 'https://github.com/zore1803/guruji-pooja-seva-portal',
+      live: 'https://seva-profile-scribe.vercel.app/',
+      period: 'Sep – Oct 2024',
+      gradient: 'from-violet-500 to-purple-500',
+      icon: Globe,
     },
     {
-      id:3,
-      title: "Log File Analyzer for Intrusion Detection",
-      description: "LogShield is a modern log file analyzer designed for real-time intrusion detection. It identifies security threats like brute-force attacks, port scanning, and failed authentications using advanced parsing and machine learning. The platform features live dashboards, visual threat analytics, and exportable reports (PDF/CSV). Built with a clean UI and deployed on Vercel, it's ideal for quick, actionable security insights.",
-      image : "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&h=400&fit=crop",
-      tech : [ "Python","Flask","React","ML"],
-      github: "https://github.com/zore1803/log-analyzer",
-      live: "https://log-analyzer-black.vercel.app/",
-      period : "2025"
-    }
-
+      id: 3,
+      title: 'Security Tools',
+      subtitle: 'Keylogger & Vulnerability Scanner',
+      description:
+        'Built a keylogger and vulnerability scanner under mentor guidance at Elevate Labs. Hands-on Wireshark, firewalls, and password strength analysis.',
+      tech: ['Python', 'Wireshark', 'Nmap', 'Firewalls'],
+      github: 'https://github.com/zore1803',
+      period: 'Jan – Apr 2026',
+      gradient: 'from-rose-500 to-pink-500',
+      icon: Search,
+    },
+    {
+      id: 4,
+      title: 'Portfolio v2',
+      subtitle: 'This Website',
+      description:
+        'A creative, modern portfolio with animated blobs, gradient effects, dark/light mode, and smooth interactions. Built to stand out.',
+      tech: ['React', 'TypeScript', 'Tailwind', 'Vite'],
+      github: 'https://github.com/zore1803/Portfolio',
+      period: '2025',
+      gradient: 'from-amber-500 to-orange-500',
+      icon: Shield,
+    },
   ];
 
   return (
-    <section id="projects" className="py-20 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Featured Projects
-          </h2>
-          <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full mb-6"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Here are some of my recent projects that showcase my skills and passion for development
-          </p>
-        </div>
+    <section id="projects" className="relative py-24 overflow-hidden px-6">
+      <div className="blob w-[350px] h-[350px] bottom-[5%] left-[-8%]" style={{ background: 'var(--c-accent-2)', animationDelay: '3s' }} />
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <Card 
-              key={project.id} 
-              className="group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-white border-0 shadow-lg overflow-hidden"
-              style={{ animationDelay: `${index * 0.1}s` }}
+      <div className="relative z-10 max-w-6xl mx-auto">
+        <p className="section-label">Projects</p>
+        <h2 className="section-heading">
+          Things I've <span className="gradient-text">Built</span>
+        </h2>
+        <p className="section-desc">
+          From anti-theft security platforms to payment integrations — here's what I've been working on.
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              className={`card overflow-hidden group ${project.featured ? 'md:col-span-2' : ''}`}
+              onMouseEnter={() => setHoveredId(project.id)}
+              onMouseLeave={() => setHoveredId(null)}
             >
-              <div className="relative overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
-              </div>
-              
-              <CardHeader>
-                <div className="flex justify-between items-start mb-2">
-                  <CardTitle className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
-                    {project.title}
-                  </CardTitle>
-                  <span className="text-sm text-gray-500 font-medium">{project.period}</span>
+              {/* Gradient top bar */}
+              <div className={`h-1.5 bg-gradient-to-r ${project.gradient} transition-all duration-500 ${hoveredId === project.id ? 'opacity-100' : 'opacity-40'}`} />
+
+              <div className={`p-6 md:p-8 ${project.featured ? 'md:flex md:gap-8 md:items-start' : ''}`}>
+                {/* Icon */}
+                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${project.gradient} flex items-center justify-center flex-shrink-0 shadow-lg mb-5 md:mb-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
+                  <project.icon size={24} className="text-white" />
                 </div>
-                <CardDescription className="text-gray-600 leading-relaxed">
-                  {project.description}
-                </CardDescription>
-              </CardHeader>
-              
-              <CardContent className="pt-0">
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.map((tech) => (
-                    <span 
-                      key={tech}
-                      className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium"
-                    >
-                      {tech}
+
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+                    <div>
+                      <h3 className="text-xl font-bold font-['Outfit']" style={{ color: 'var(--c-text)' }}>
+                        {project.title}
+                        {project.featured && (
+                          <span className="ml-2 text-xs font-medium px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-500">
+                            Featured
+                          </span>
+                        )}
+                      </h3>
+                      <p className="text-sm" style={{ color: 'var(--c-text-muted)' }}>{project.subtitle}</p>
+                    </div>
+                    <span className="text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap" style={{
+                      background: 'var(--c-surface-2)',
+                      color: 'var(--c-text-muted)',
+                      border: '1px solid var(--c-border)',
+                    }}>
+                      {project.period}
                     </span>
-                  ))}
+                  </div>
+
+                  <p className="text-sm leading-relaxed mb-5" style={{ color: 'var(--c-text-muted)' }}>
+                    {project.description}
+                  </p>
+
+                  {/* Tech tags */}
+                  <div className="flex flex-wrap gap-2 mb-5">
+                    {project.tech.map((tech) => (
+                      <span key={tech} className="tag">{tech}</span>
+                    ))}
+                  </div>
+
+                  {/* Links */}
+                  <div className="flex gap-3">
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 hover:-translate-y-0.5"
+                        style={{
+                          background: 'var(--c-surface-2)',
+                          border: '1px solid var(--c-border)',
+                          color: 'var(--c-text-muted)',
+                        }}
+                      >
+                        <Github size={14} />
+                        Code
+                      </a>
+                    )}
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 hover:bg-emerald-500/20"
+                      >
+                        <ArrowUpRight size={14} />
+                        Live Demo
+                      </a>
+                    )}
+                  </div>
                 </div>
-                
-                <div className="flex gap-3">
-                  <Button 
-                    size="sm" 
-                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
-                    asChild
-                  >
-                    <a href={project.live} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink size={16} className="mr-2" />
-                      Live Demo
-                    </a>
-                  </Button>
-                  <Button 
-                    size="sm" 
-                    variant="outline" 
-                    className="flex-1 border-gray-300 hover:bg-gray-50"
-                    asChild
-                  >
-                    <a href={project.github} target="_blank" rel="noopener noreferrer">
-                      <Github size={16} className="mr-2" />
-                      Code
-                    </a>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
       </div>
