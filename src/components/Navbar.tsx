@@ -72,7 +72,7 @@ const Navbar = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300"
+                className="px-4 py-1.5 rounded-xl text-sm font-medium transition-all duration-300"
                 style={{
                   color: activeSection === item.id ? 'var(--c-accent)' : 'var(--c-text-muted)',
                   background: activeSection === item.id ? 'var(--c-glow)' : 'transparent',
