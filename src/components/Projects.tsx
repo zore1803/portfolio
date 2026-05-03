@@ -13,6 +13,7 @@ const Projects = () => {
         'A BLE-powered security ecosystem creating a hardware-identity bond between handsets and devices. Secure OAuth 2.0 & JWT authentication, device-level integrity, and a Law Enforcement Command Center with GIS-based recovery.',
       tech: ['React Native', 'Expo', 'Supabase', 'BLE 2.0', 'OAuth', 'JWT'],
       github: 'https://github.com/zore1803',
+      live: 'https://loqit-psi.vercel.app/',
       period: 'Oct 2025 – Present',
       gradient: 'from-emerald-500 to-teal-500',
       icon: Lock,
