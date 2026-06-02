@@ -12,7 +12,7 @@ import { useReveal } from '@/hooks/useReveal';
 const Index = () => {
   useReveal();
   return (
-    <div className="min-h-screen relative" style={{ background: 'var(--c-bg)', color: 'var(--c-text)' }}>
+    <div className="portfolio-shell">
       <Navbar />
       <Hero />
       <About />

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowDown, Github, Linkedin, Mail, Sparkles } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Github, Linkedin, Mail, Radar, ShieldCheck, Terminal, Wifi } from 'lucide-react';
 
 const Hero = () => {
   const [mounted, setMounted] = useState(false);
@@ -9,132 +9,140 @@ const Hero = () => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    element?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const heroCards = [
+    { title: 'LOQIT', text: 'BLE anti-theft identity bond', icon: Wifi, status: 'Live demo' },
+    { title: 'Security Labs', text: 'Keylogger, scanner, Wireshark', icon: Terminal, status: 'Jan-Apr 2026' },
+    { title: 'TryHackMe', text: 'Top 5% with 77+ lab hours', icon: Radar, status: 'Ranked' },
+  ];
+
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden px-6">
-      {/* Animated background blobs */}
-      <div className="blob w-[500px] h-[500px] top-[-10%] left-[-5%]" style={{ background: 'var(--c-accent)' }} />
-      <div className="blob w-[400px] h-[400px] bottom-[-5%] right-[-5%]" style={{ background: 'var(--c-accent-2)', animationDelay: '2s' }} />
-      <div className="blob w-[300px] h-[300px] top-[30%] right-[20%]" style={{ background: 'var(--c-accent-3)', animationDelay: '4s' }} />
+    <section id="hero" className="section-wrap hero-section flex min-h-screen items-center pt-24">
+      <div className="soft-glow left-[8%] top-[18%] h-56 w-56 rounded-full bg-[var(--c-accent)]" />
+      <div className="soft-glow right-[22%] top-[4%] h-72 w-72 rounded-full bg-[var(--c-accent-2)]" />
 
-      {/* Decorative grid dots */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: 'radial-gradient(circle, var(--c-text) 1px, transparent 1px)',
-        backgroundSize: '40px 40px',
-      }} />
-
-      {/* Content */}
       <div
-        className="relative z-10 text-center max-w-4xl mx-auto pt-24 md:pt-32"
+        className="section-inner grid w-full gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center"
         style={{
           opacity: mounted ? 1 : 0,
           transform: mounted ? 'translateY(0)' : 'translateY(30px)',
-          transition: 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          transition: 'all 0.85s cubic-bezier(0.22, 1, 0.36, 1)',
         }}
       >
-        {/* Badge */}
-        <div
-          className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full mb-10 transition-all duration-500 hover:scale-105"
-          style={{
-            background: 'linear-gradient(135deg, var(--c-surface), var(--c-surface-2))',
-            border: '1px solid var(--c-border)',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
-          }}
-        >
-          <div className="relative">
-            <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-            <div className="absolute inset-0 w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping opacity-75" />
+        <div>
+          <p className="mb-5 text-sm font-black uppercase tracking-[0.18em] text-[var(--c-text)]">
+            ROHIT ZORE <span className="text-[var(--c-accent-2)]">//</span>{' '}
+            <span className="text-[var(--c-text-muted)]">Cyber Security Enthusiast & Full-Stack Developer</span>
+          </p>
+
+          <h1 className="max-w-2xl font-['Outfit'] text-[clamp(2.95rem,7.2vw,6.5rem)] font-black uppercase leading-[0.88] text-[var(--c-text)]">
+            <span className="gradient-text">Rohit</span>{' '}
+            <span className="warm-text">Zore</span>
+          </h1>
+
+          <p className="mt-5 max-w-xl text-base leading-7 text-[var(--c-text-muted)] md:text-lg">
+            Mumbai-based builder mixing security research, mobile systems, and clean web experiences. I design products that look sharp, authenticate properly, and survive real-world misuse.
+          </p>
+
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <button className="btn-primary" onClick={() => scrollToSection('projects')}>
+              View Projects <ArrowUpRight size={16} />
+            </button>
+            <button className="btn-outline" onClick={() => scrollToSection('contact')}>
+              Start a Conversation <Mail size={16} />
+            </button>
           </div>
-          <span className="text-xs font-bold uppercase tracking-[2px]" style={{ color: 'var(--c-accent)' }}>
-            Status: Ready for Breach
-          </span>
-          <Sparkles size={14} className="text-emerald-500" />
-        </div>
 
-        {/* Heading */}
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 font-['Outfit'] leading-[1.05] reveal reveal-up">
-          <span style={{ color: 'var(--c-text)' }}>Hey, I'm </span>
-          <span className="gradient-text">Rohit</span>
-        </h1>
-
-        {/* Subtitle */}
-        <p className="text-xl md:text-2xl font-medium mb-4 reveal reveal-up stagger-1" style={{ color: 'var(--c-text-muted)' }}>
-          Cyber Security Enthusiast & Full-Stack Developer
-        </p>
-
-        {/* Description */}
-        <p className="text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed reveal reveal-up stagger-2" style={{ color: 'var(--c-text-muted)' }}>
-          I build <span className="font-semibold" style={{ color: 'var(--c-accent)' }}>secure systems</span>, break into them (legally),
-          and craft beautiful web experiences. Ranked{' '}
-          <span className="font-bold" style={{ color: 'var(--c-accent-2)' }}>Top 5%</span> on TryHackMe.
-        </p>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 reveal reveal-up stagger-3">
-          <button className="btn-primary hover-lift" onClick={() => scrollToSection('projects')}>
-            <Sparkles size={16} />
-            View My Work
-          </button>
-          <button className="btn-outline hover-lift" onClick={() => scrollToSection('contact')}>
-            Let's Connect
-          </button>
-        </div>
-
-        {/* Social links */}
-        <div className="flex justify-center gap-3 mb-16 reveal reveal-up stagger-4">
-          {[
-            { href: 'https://github.com/zore1803', icon: Github, label: 'GitHub' },
-            { href: 'https://linkedin.com/in/rzore430', icon: Linkedin, label: 'LinkedIn' },
-            { href: 'mailto:rzore430@gmail.com', icon: Mail, label: 'Email' },
-          ].map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              target={s.href.startsWith('mailto') ? undefined : '_blank'}
-              rel="noopener noreferrer"
-              className="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-emerald-500/50"
-              style={{
-                background: 'var(--c-surface)',
-                border: '1px solid var(--c-border)',
-                color: 'var(--c-text-muted)',
-              }}
-              aria-label={s.label}
-            >
-              <s.icon size={20} />
-            </a>
-          ))}
-        </div>
-
-        {/* Stats row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mb-12">
-          {[
-            { value: 'Top 5%', label: 'TryHackMe', emoji: '🏆' },
-            { value: '6+', label: 'Certifications', emoji: '📜' },
-            { value: '4+', label: 'Projects', emoji: '🚀' },
-            { value: '77+', label: 'Hours of Labs', emoji: '🔬' },
-          ].map((stat) => (
-            <div
-              key={stat.label}
-              className="card p-4 text-center"
-            >
-              <div className="text-xl mb-1">{stat.emoji}</div>
-              <div className="text-xl font-bold font-['Outfit']" style={{ color: 'var(--c-text)' }}>{stat.value}</div>
-              <div className="text-xs font-medium mt-0.5" style={{ color: 'var(--c-text-muted)' }}>{stat.label}</div>
+          <div className="relative mt-8 flex min-h-[250px] flex-col items-center justify-center gap-4 sm:block">
+            <div className="avatar-ring sm:absolute sm:left-20 sm:top-2">
+              <img src="/lovable-uploads/dca1d829-b131-45a7-8d52-3cf6cd1550d2.png" alt="Rohit Zore" />
             </div>
-          ))}
+
+            {[
+              { text: 'React Native', cls: 'sm:left-0 sm:top-14' },
+              { text: 'Supabase', cls: 'sm:left-4 sm:top-28' },
+              { text: 'OAuth/JWT', cls: 'sm:left-[18rem] sm:top-6' },
+              { text: 'BLE', cls: 'sm:left-[19rem] sm:top-[5.4rem]' },
+              { text: 'Wireshark', cls: 'sm:left-[18rem] sm:top-[9.7rem]' },
+              { text: 'Pentesting', cls: 'sm:left-[17rem] sm:top-[14rem]' },
+            ].map((chip) => (
+              <span key={chip.text} className={`tag skill-chip static sm:absolute ${chip.cls}`}>
+                {chip.text}
+              </span>
+            ))}
+          </div>
         </div>
 
-        {/* Scroll indicator */}
-        <button
-          onClick={() => scrollToSection('about')}
-          className="animate-bounce transition-colors duration-300"
-          style={{ color: 'var(--c-text-muted)' }}
-        >
-          <ArrowDown size={24} />
-        </button>
+        <div className="hero-visual-stack relative">
+          <div className="circuit-line left-[5%] top-[21%] h-24 w-28 border-l border-t after:right-[-4px] after:top-[-4px]" />
+          <div className="circuit-line right-[7%] top-[43%] h-28 w-36 border-r border-t after:left-[-4px] after:top-[-4px]" />
+
+          <div className="glass-panel hero-visual-card hero-ui-card p-4">
+            <div className="mb-4 h-32 overflow-hidden rounded-md border border-white/10 bg-[radial-gradient(circle_at_35%_38%,rgba(96,255,241,0.65),transparent_18%),linear-gradient(135deg,rgba(255,134,87,0.42),rgba(10,23,42,0.95))]">
+              <div className="grid h-full grid-cols-3 gap-2 p-4 opacity-70">
+                <span className="rounded bg-white/10" />
+                <span className="rounded bg-[var(--c-accent)]/25" />
+                <span className="rounded bg-white/10" />
+                <span className="col-span-2 rounded bg-[var(--c-accent-2)]/30" />
+                <span className="rounded bg-white/10" />
+              </div>
+            </div>
+            <h3 className="font-['Outfit'] text-2xl font-black uppercase leading-none text-[var(--c-text)]">Threat-Aware UI</h3>
+            <p className="mt-2 text-sm leading-5 text-[var(--c-text-muted)]">
+              Interfaces that make auth, device state, and recovery workflows visible.
+            </p>
+          </div>
+
+          <div className="glass-panel hero-visual-card hero-security-card p-4">
+            <div className="mb-4 h-28 overflow-hidden rounded-md border border-white/10 bg-[linear-gradient(135deg,#060b1f,#0e3846_45%,#ff744d)]">
+              <div className="flex h-full items-center justify-center">
+                <ShieldCheck size={70} className="text-[var(--c-accent)] drop-shadow-[0_0_18px_rgba(96,255,241,0.65)]" />
+              </div>
+            </div>
+            <h3 className="font-['Outfit'] text-2xl font-black uppercase leading-none text-[var(--c-text)]">Security Stack</h3>
+            <p className="mt-2 text-sm leading-5 text-[var(--c-text-muted)]">OAuth 2.0, JWT, BLE, Supabase, GIS recovery.</p>
+          </div>
+
+          <div className="hero-card-row grid gap-4 md:grid-cols-3">
+            {heroCards.map((card) => (
+              <div key={card.title} className="hud-card p-4">
+                <card.icon size={20} className="mb-4 text-[var(--c-accent)]" />
+                <p className="font-['Outfit'] text-lg font-black uppercase leading-none text-[var(--c-text)]">{card.title}</p>
+                <p className="mt-2 min-h-10 text-xs leading-5 text-[var(--c-text-muted)]">{card.text}</p>
+                <span className="mt-3 inline-flex rounded bg-[var(--c-accent-2)]/20 px-2 py-1 text-[10px] font-black uppercase tracking-wider text-[var(--c-accent-3)]">
+                  {card.status}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 md:block">
+          <button onClick={() => scrollToSection('about')} className="text-[var(--c-text-muted)] transition hover:text-[var(--c-accent)]" aria-label="Scroll to about">
+            <ArrowDown size={24} />
+          </button>
+        </div>
+      </div>
+
+      <div className="fixed bottom-6 left-6 z-40 hidden gap-3 lg:flex">
+        {[
+          { href: 'https://github.com/zore1803', icon: Github, label: 'GitHub' },
+          { href: 'https://linkedin.com/in/rzore430', icon: Linkedin, label: 'LinkedIn' },
+          { href: 'mailto:rzore430@gmail.com', icon: Mail, label: 'Email' },
+        ].map((social) => (
+          <a
+            key={social.label}
+            href={social.href}
+            target={social.href.startsWith('mailto') ? undefined : '_blank'}
+            rel="noopener noreferrer"
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--c-border)] bg-white/10 text-[var(--c-text-muted)] backdrop-blur-xl transition hover:-translate-y-1 hover:text-[var(--c-accent)]"
+            aria-label={social.label}
+          >
+            <social.icon size={17} />
+          </a>
+        ))}
       </div>
     </section>
   );

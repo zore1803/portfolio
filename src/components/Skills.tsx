@@ -1,146 +1,129 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
+import { Braces, Code2, Database, GitBranch, KeyRound, Network, Radar, Shield, Smartphone, Terminal, Wrench } from 'lucide-react';
 
 const Skills = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
-      { threshold: 0.15 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
-
-  const categories = [
+  const skillPanels = [
     {
-      title: 'Security & Networks',
-      emoji: '🛡️',
-      gradient: 'from-emerald-500 to-teal-500',
-      skills: [
-        { name: 'Networking Fundamentals', level: 85 },
-        { name: 'Linux & Windows Security', level: 80 },
-        { name: 'Active Directory', level: 75 },
-        { name: 'Wireshark / Firewalls', level: 78 },
-        { name: 'Password Security / JWT', level: 82 },
+      title: 'Security Logic',
+      className: 'skills-panel-left',
+      icon: Shield,
+      color: 'var(--c-accent)',
+      items: [
+        { icon: Network, name: 'Networking', detail: 'routing, packets, protocols' },
+        { icon: Radar, name: 'Wireshark / Nmap', detail: 'traffic and target analysis' },
+        { icon: KeyRound, name: 'Auth Security', detail: 'JWT, OAuth 2.0, passwords' },
       ],
     },
     {
-      title: 'Languages & Frameworks',
-      emoji: '⚡',
-      gradient: 'from-violet-500 to-purple-500',
-      skills: [
-        { name: 'Python', level: 80 },
-        { name: 'JavaScript / HTML / CSS', level: 88 },
-        { name: 'React Native (Expo)', level: 78 },
-        { name: 'Java (Basics)', level: 60 },
-        { name: 'Supabase / REST APIs', level: 80 },
+      title: 'Frontend Stack',
+      className: 'skills-panel-right',
+      icon: Code2,
+      color: 'var(--c-accent-2)',
+      items: [
+        { icon: Braces, name: 'React / TypeScript', detail: 'component-driven UI' },
+        { icon: Smartphone, name: 'React Native', detail: 'Expo mobile builds' },
+        { icon: Database, name: 'Supabase', detail: 'data, auth, edge APIs' },
       ],
     },
     {
-      title: 'Tools & DevOps',
-      emoji: '🔧',
-      gradient: 'from-rose-500 to-pink-500',
-      skills: [
-        { name: 'Git & GitHub', level: 88 },
-        { name: 'MySQL', level: 75 },
-        { name: 'OAuth 2.0 / BLE', level: 76 },
-        { name: 'Vercel Deployment', level: 80 },
-        { name: 'Nmap / Pen Testing', level: 70 },
+      title: 'Tools Pipeline',
+      className: 'skills-panel-bottom',
+      icon: Wrench,
+      color: 'var(--c-violet)',
+      items: [
+        { icon: Terminal, name: 'Python / Linux', detail: 'scripts, labs, automation' },
+        { icon: GitBranch, name: 'Git / Vercel', detail: 'versioning and deployment' },
       ],
     },
   ];
 
-  const softSkills = [
-    '🧩 Problem-Solving',
-    '🔄 Adaptability',
-    '⏰ Time Management',
-    '💬 Communication',
-    '🤝 Team Collaboration',
+  const floatingSkills = [
+    { text: 'BLE', cls: 'left-[7%] top-[45%]' },
+    { text: 'JWT', cls: 'left-[33%] top-[27%]' },
+    { text: 'OAuth', cls: 'right-[35%] top-[24%]' },
+    { text: 'MySQL', cls: 'right-[10%] top-[46%]' },
+    { text: 'Firewalls', cls: 'left-[29%] bottom-[19%]' },
+    { text: 'REST APIs', cls: 'right-[30%] bottom-[16%]' },
   ];
 
   return (
-    <section id="skills" ref={sectionRef} className="relative py-24 overflow-hidden px-6">
-      <div className="blob w-[400px] h-[400px] top-[20%] left-[-8%]" style={{ background: 'var(--c-accent-3)', animationDelay: '2s' }} />
+    <section id="skills" className="section-wrap skills-section">
+      <div className="section-inner">
+        <div className="mb-10 grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+          <div>
+            <p className="section-label mb-4">Skills</p>
+            <h2 className="section-heading">
+              Featured Skills
+            </h2>
+          </div>
+          <p className="section-desc">
+            Not a scoreboard of percentages. This is the stack I connect when I build secure apps, inspect systems, and ship production-ready interfaces.
+          </p>
+        </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto">
-        <p className="section-label">Skills</p>
-        <h2 className="section-heading">
-          My <span className="gradient-text">Arsenal</span>
-        </h2>
-        <p className="section-desc">
-          Technologies and tools I use to build and break things.
-        </p>
+        <div className="skills-map">
+          <div className="skills-map-title">Skills</div>
 
-        {/* Skill categories */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {categories.map((cat, catIdx) => (
-            <div key={cat.title} className="group">
-              <div className="flex items-center gap-4 mb-8">
-                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${cat.gradient} flex items-center justify-center text-2xl shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
-                  {cat.emoji}
-                </div>
-                <h3 className="text-xl font-black font-['Outfit'] tracking-tight" style={{ color: 'var(--c-text)' }}>
-                  {cat.title}
-                </h3>
+          <div className="skills-backdrop-window skills-window-a">
+            <span />
+            <span />
+            <span />
+          </div>
+          <div className="skills-backdrop-window skills-window-b">
+            <span />
+            <span />
+          </div>
+
+          <svg className="skills-wires" viewBox="0 0 1000 620" aria-hidden="true">
+            <path d="M500 304 C408 232 346 188 246 184" />
+            <path d="M500 304 C614 220 694 164 828 174" />
+            <path d="M500 304 C474 405 438 487 334 512" />
+            <path d="M500 304 C584 407 666 494 798 490" />
+            <path d="M500 304 C370 330 246 350 120 316" />
+            <path d="M500 304 C625 320 758 344 910 310" />
+          </svg>
+
+          <div className="skills-hub">
+            <div className="skills-hub-ring" />
+            <Shield size={34} />
+            <span>Core</span>
+          </div>
+
+          {skillPanels.map((panel) => (
+            <article key={panel.title} className={`skill-map-panel ${panel.className}`} style={{ '--panel-color': panel.color } as React.CSSProperties}>
+              <div className="mb-4 flex items-center gap-3">
+                <span className="skill-panel-icon">
+                  <panel.icon size={19} />
+                </span>
+                <h3>{panel.title}</h3>
               </div>
-
-              <div className="space-y-8">
-                {cat.skills.map((skill, skillIdx) => (
-                  <div key={skill.name} className="relative">
-                    <div className="flex justify-between items-center mb-3">
-                      <span className="text-xs font-bold uppercase tracking-widest" style={{ color: 'var(--c-text-muted)' }}>
-                        {skill.name}
-                      </span>
-                      <span className="text-xs font-black font-mono" style={{ color: 'var(--c-accent)' }}>
-                        {skill.level}%
-                      </span>
-                    </div>
-                    <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden relative">
-                      {/* Background glow track */}
-                      <div className="absolute inset-0 opacity-20 blur-sm" style={{ background: 'var(--c-accent)' }} />
-                      
-                      {/* Animated fill */}
-                      <div
-                        className={`h-full rounded-full bg-gradient-to-r ${cat.gradient} relative z-10`}
-                        style={{
-                          width: isVisible ? `${skill.level}%` : '0%',
-                          transition: `width 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)`,
-                          transitionDelay: `${catIdx * 0.1 + skillIdx * 0.05}s`,
-                          boxShadow: '0 0 20px rgba(16, 185, 129, 0.4)',
-                        }}
-                      >
-                        {/* Shimmer effect */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
-                      </div>
+              <div className="space-y-3">
+                {panel.items.map((item) => (
+                  <div key={item.name} className="skill-map-row">
+                    <item.icon size={18} />
+                    <div>
+                      <strong>{item.name}</strong>
+                      <span>{item.detail}</span>
                     </div>
                   </div>
                 ))}
               </div>
-            </div>
+            </article>
           ))}
-        </div>
 
-        {/* Soft skills */}
-        <div className="card p-6 text-center">
-          <h3 className="font-bold font-['Outfit'] mb-4 text-lg" style={{ color: 'var(--c-text)' }}>
-            Soft Skills
-          </h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {softSkills.map((skill) => (
-              <span
-                key={skill}
-                className="px-5 py-2.5 rounded-2xl text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md cursor-default"
-                style={{
-                  background: 'var(--c-surface-2)',
-                  border: '1px solid var(--c-border)',
-                  color: 'var(--c-text-muted)',
-                }}
-              >
-                {skill}
-              </span>
-            ))}
+          {floatingSkills.map((skill) => (
+            <span key={skill.text} className={`tag skill-map-chip ${skill.cls}`}>
+              {skill.text}
+            </span>
+          ))}
+
+          <div className="avatar-ring skills-avatar">
+            <img src="/lovable-uploads/dca1d829-b131-45a7-8d52-3cf6cd1550d2.png" alt="Rohit Zore" />
+          </div>
+          <div className="skills-avatar-tags">
+            <span className="tag">Featured Skill</span>
+            <span className="tag">Secure UI</span>
+            <span className="tag">3D Logic</span>
           </div>
         </div>
       </div>
