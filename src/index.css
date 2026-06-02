@@ -1228,7 +1228,15 @@
   width: 140px;
 }
 
-@media (max-width: 1320px) {
+@media (min-width: 1501px) and (max-width: 1900px) {
+  .hero-section .section-inner {
+    width: min(1180px, calc(100vw - 34rem));
+    margin-left: clamp(1.5rem, 7vw, 12rem);
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 1500px) {
   .nav-orbit {
     display: none;
   }
