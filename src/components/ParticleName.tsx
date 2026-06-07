@@ -90,7 +90,7 @@ const ParticleName = ({ text = 'ROHIT ZORE' }: { text?: string }) => {
           ty: target.y,
           vx: 0,
           vy: 0,
-          size: randomBetween(1.45, 2.45),
+          size: randomBetween(1.05, 1.85),
           color: `rgb(0, ${green}, 255)`,
           alpha: randomBetween(0.72, 1),
         };
@@ -103,14 +103,16 @@ const ParticleName = ({ text = 'ROHIT ZORE' }: { text?: string }) => {
       const height = rect.height;
 
       ctx.clearRect(0, 0, width, height);
+      ctx.save();
+      ctx.rect(0, 0, width, height);
+      ctx.clip();
 
       const fieldX = mouseRef.current.active ? mouseRef.current.x : width * 0.46;
       const fieldY = mouseRef.current.active ? mouseRef.current.y : height * 0.5;
-      const fieldRadius = Math.min(width, height) * 0.32;
+      const fieldRadius = Math.min(width, height) * 0.24;
 
-      ctx.save();
       ctx.strokeStyle = 'rgba(129, 180, 255, 0.34)';
-      ctx.lineWidth = 2;
+      ctx.lineWidth = 1.4;
       ctx.beginPath();
       ctx.arc(fieldX, fieldY, fieldRadius, 0, Math.PI * 2);
       ctx.stroke();
@@ -133,10 +135,10 @@ const ParticleName = ({ text = 'ROHIT ZORE' }: { text?: string }) => {
           const mx = particle.x - mouseRef.current.x;
           const my = particle.y - mouseRef.current.y;
           const dist = Math.hypot(mx, my);
-          const radius = 100;
+          const radius = width < 520 ? 48 : 58;
 
           if (dist > 0 && dist < radius) {
-            const force = (1 - dist / radius) * 8.5;
+            const force = (1 - dist / radius) * 4.2;
             particle.vx += (mx / dist) * force;
             particle.vy += (my / dist) * force;
           }
@@ -151,20 +153,21 @@ const ParticleName = ({ text = 'ROHIT ZORE' }: { text?: string }) => {
         ctx.globalAlpha = particle.alpha;
         ctx.fillStyle = particle.color;
         ctx.shadowColor = particle.color;
-        ctx.shadowBlur = 9;
+        ctx.shadowBlur = 6;
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         ctx.fill();
 
-        if (particle.size > 2.1) {
-          ctx.globalAlpha = particle.alpha * 0.12;
+        if (particle.size > 1.55) {
+          ctx.globalAlpha = particle.alpha * 0.08;
           ctx.beginPath();
-          ctx.arc(particle.x, particle.y, particle.size * 2.6, 0, Math.PI * 2);
+          ctx.arc(particle.x, particle.y, particle.size * 2.2, 0, Math.PI * 2);
           ctx.fill();
         }
       }
 
       ctx.globalAlpha = 1;
       ctx.shadowBlur = 0;
+      ctx.restore();
       frameRef.current = requestAnimationFrame(animate);
     };
 
