@@ -957,10 +957,10 @@
 
 .hero-particle-title {
   position: relative;
-  width: min(100%, 680px);
-  height: clamp(122px, 12vw, 176px);
+  width: min(100%, 650px);
+  height: clamp(104px, 10vw, 148px);
   overflow: hidden;
-  margin: -0.15rem 0 0.1rem;
+  margin: -0.1rem 0 0.18rem;
 }
 
 .hero-particle-title canvas {
@@ -1529,7 +1529,7 @@
   }
 
   .hero-particle-title {
-    height: clamp(92px, 26vw, 116px);
+    height: clamp(84px, 23vw, 102px);
   }
 
   .section-heading {
@@ -1720,7 +1720,7 @@
   }
 
   .hero-particle-title {
-    height: 92px;
+    height: 84px;
   }
 
   .preview-actions,

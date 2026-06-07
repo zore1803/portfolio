@@ -10,6 +10,8 @@ type Particle = {
   size: number;
   color: string;
   alpha: number;
+  highlight: string;
+  halo: number;
 };
 
 const randomBetween = (min: number, max: number) => Math.random() * (max - min) + min;
@@ -57,7 +59,7 @@ const ParticleName = ({ text = 'ROHIT ZORE' }: { text?: string }) => {
       offCtx.fillText(text, width / 2, height / 2);
 
       const image = offCtx.getImageData(0, 0, width, height);
-      const gap = width < 520 ? 4 : 5;
+      const gap = 3;
       const targets: Array<{ x: number; y: number }> = [];
 
       for (let y = 0; y < height; y += gap) {
@@ -67,20 +69,17 @@ const ParticleName = ({ text = 'ROHIT ZORE' }: { text?: string }) => {
         }
       }
 
-      const maxParticles = width < 520 ? 1200 : 1600;
+      const maxParticles = width < 520 ? 1500 : 2300;
       targets.sort(() => Math.random() - 0.5);
       const selected = targets.slice(0, maxParticles);
 
       particlesRef.current = selected.map((target, index) => {
         const t = selected.length <= 1 ? 0 : index / (selected.length - 1);
-        const startSide = Math.floor(Math.random() * 4);
-        let x = randomBetween(0, width);
-        let y = randomBetween(0, height);
-
-        if (startSide === 0) y = randomBetween(-height, -20);
-        if (startSide === 1) x = randomBetween(width + 20, width * 2);
-        if (startSide === 2) y = randomBetween(height + 20, height * 2);
-        if (startSide === 3) x = randomBetween(-width, -20);
+        const angle = randomBetween(0, Math.PI * 2);
+        const distanceX = randomBetween(width < 520 ? 8 : 12, width < 520 ? 32 : 46);
+        const distanceY = randomBetween(width < 520 ? 5 : 8, width < 520 ? 18 : 28);
+        const x = target.x + Math.cos(angle) * distanceX;
+        const y = target.y + Math.sin(angle) * distanceY;
 
         const green = Math.round(240 - t * 138);
         return {
@@ -90,9 +89,11 @@ const ParticleName = ({ text = 'ROHIT ZORE' }: { text?: string }) => {
           ty: target.y,
           vx: 0,
           vy: 0,
-          size: randomBetween(1.05, 1.85),
+          size: randomBetween(0.75, 1.35),
           color: `rgb(0, ${green}, 255)`,
-          alpha: randomBetween(0.72, 1),
+          alpha: randomBetween(0.78, 1),
+          highlight: t > 0.56 ? 'rgba(157, 210, 255, 0.95)' : 'rgba(178, 255, 252, 0.95)',
+          halo: randomBetween(1.65, 2.25),
         };
       });
     };
@@ -107,23 +108,6 @@ const ParticleName = ({ text = 'ROHIT ZORE' }: { text?: string }) => {
       ctx.rect(0, 0, width, height);
       ctx.clip();
 
-      const fieldX = mouseRef.current.active ? mouseRef.current.x : width * 0.46;
-      const fieldY = mouseRef.current.active ? mouseRef.current.y : height * 0.5;
-      const fieldRadius = Math.min(width, height) * 0.24;
-
-      ctx.strokeStyle = 'rgba(129, 180, 255, 0.34)';
-      ctx.lineWidth = 1.4;
-      ctx.beginPath();
-      ctx.arc(fieldX, fieldY, fieldRadius, 0, Math.PI * 2);
-      ctx.stroke();
-
-      ctx.strokeStyle = 'rgba(0, 240, 255, 0.12)';
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.arc(fieldX + fieldRadius * 0.28, fieldY, fieldRadius * 0.72, 0, Math.PI * 2);
-      ctx.stroke();
-      ctx.restore();
-
       for (const particle of particlesRef.current) {
         const dx = particle.tx - particle.x;
         const dy = particle.ty - particle.y;
@@ -135,10 +119,10 @@ const ParticleName = ({ text = 'ROHIT ZORE' }: { text?: string }) => {
           const mx = particle.x - mouseRef.current.x;
           const my = particle.y - mouseRef.current.y;
           const dist = Math.hypot(mx, my);
-          const radius = width < 520 ? 48 : 58;
+          const radius = width < 520 ? 34 : 42;
 
           if (dist > 0 && dist < radius) {
-            const force = (1 - dist / radius) * 4.2;
+            const force = (1 - dist / radius) * 2.8;
             particle.vx += (mx / dist) * force;
             particle.vy += (my / dist) * force;
           }
@@ -149,20 +133,33 @@ const ParticleName = ({ text = 'ROHIT ZORE' }: { text?: string }) => {
         particle.x += particle.vx;
         particle.y += particle.vy;
 
+        ctx.globalAlpha = particle.alpha * 0.14;
+        ctx.fillStyle = particle.color;
+        ctx.shadowColor = particle.color;
+        ctx.shadowBlur = 2;
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size * particle.halo, 0, Math.PI * 2);
+        ctx.fill();
+
         ctx.beginPath();
         ctx.globalAlpha = particle.alpha;
         ctx.fillStyle = particle.color;
         ctx.shadowColor = particle.color;
-        ctx.shadowBlur = 6;
+        ctx.shadowBlur = 1.5;
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         ctx.fill();
 
-        if (particle.size > 1.55) {
-          ctx.globalAlpha = particle.alpha * 0.08;
-          ctx.beginPath();
-          ctx.arc(particle.x, particle.y, particle.size * 2.2, 0, Math.PI * 2);
-          ctx.fill();
-        }
+        ctx.globalAlpha = particle.alpha * 0.55;
+        ctx.fillStyle = particle.highlight;
+        ctx.beginPath();
+        ctx.arc(
+          particle.x - particle.size * 0.28,
+          particle.y - particle.size * 0.32,
+          Math.max(0.35, particle.size * 0.32),
+          0,
+          Math.PI * 2
+        );
+        ctx.fill();
       }
 
       ctx.globalAlpha = 1;
