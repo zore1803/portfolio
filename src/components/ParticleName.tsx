@@ -9,6 +9,7 @@ type Particle = {
   vy: number;
   size: number;
   color: string;
+  alpha: number;
 };
 
 const randomBetween = (min: number, max: number) => Math.random() * (max - min) + min;
@@ -44,7 +45,7 @@ const ParticleName = ({ text = 'ROHIT ZORE' }: { text?: string }) => {
       offscreen.height = height;
       offCtx.clearRect(0, 0, width, height);
 
-      let fontSize = Math.min(width / 6.6, height * 0.58);
+      let fontSize = Math.min(width / 6.45, height * 0.62);
       offCtx.font = `900 ${fontSize}px Outfit, Arial, sans-serif`;
       while (offCtx.measureText(text).width > width * 0.88 && fontSize > 24) {
         fontSize -= 2;
@@ -66,7 +67,7 @@ const ParticleName = ({ text = 'ROHIT ZORE' }: { text?: string }) => {
         }
       }
 
-      const maxParticles = width < 520 ? 1150 : 1550;
+      const maxParticles = width < 520 ? 1200 : 1600;
       targets.sort(() => Math.random() - 0.5);
       const selected = targets.slice(0, maxParticles);
 
@@ -89,8 +90,9 @@ const ParticleName = ({ text = 'ROHIT ZORE' }: { text?: string }) => {
           ty: target.y,
           vx: 0,
           vy: 0,
-          size: randomBetween(1.7, 2.7),
+          size: randomBetween(1.45, 2.45),
           color: `rgb(0, ${green}, 255)`,
+          alpha: randomBetween(0.72, 1),
         };
       });
     };
@@ -102,18 +104,30 @@ const ParticleName = ({ text = 'ROHIT ZORE' }: { text?: string }) => {
 
       ctx.clearRect(0, 0, width, height);
 
-      const gradient = ctx.createLinearGradient(0, 0, width, height);
-      gradient.addColorStop(0, 'rgba(0, 240, 255, 0.18)');
-      gradient.addColorStop(1, 'rgba(0, 102, 255, 0.1)');
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, width, height);
+      const fieldX = mouseRef.current.active ? mouseRef.current.x : width * 0.46;
+      const fieldY = mouseRef.current.active ? mouseRef.current.y : height * 0.5;
+      const fieldRadius = Math.min(width, height) * 0.32;
+
+      ctx.save();
+      ctx.strokeStyle = 'rgba(129, 180, 255, 0.34)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(fieldX, fieldY, fieldRadius, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.strokeStyle = 'rgba(0, 240, 255, 0.12)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.arc(fieldX + fieldRadius * 0.28, fieldY, fieldRadius * 0.72, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.restore();
 
       for (const particle of particlesRef.current) {
         const dx = particle.tx - particle.x;
         const dy = particle.ty - particle.y;
 
-        particle.vx += dx * 0.018;
-        particle.vy += dy * 0.018;
+        particle.vx += dx * 0.026;
+        particle.vy += dy * 0.026;
 
         if (mouseRef.current.active) {
           const mx = particle.x - mouseRef.current.x;
@@ -128,19 +142,28 @@ const ParticleName = ({ text = 'ROHIT ZORE' }: { text?: string }) => {
           }
         }
 
-        particle.vx *= 0.84;
-        particle.vy *= 0.84;
+        particle.vx *= 0.8;
+        particle.vy *= 0.8;
         particle.x += particle.vx;
         particle.y += particle.vy;
 
         ctx.beginPath();
+        ctx.globalAlpha = particle.alpha;
         ctx.fillStyle = particle.color;
         ctx.shadowColor = particle.color;
-        ctx.shadowBlur = 8;
+        ctx.shadowBlur = 9;
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         ctx.fill();
+
+        if (particle.size > 2.1) {
+          ctx.globalAlpha = particle.alpha * 0.12;
+          ctx.beginPath();
+          ctx.arc(particle.x, particle.y, particle.size * 2.6, 0, Math.PI * 2);
+          ctx.fill();
+        }
       }
 
+      ctx.globalAlpha = 1;
       ctx.shadowBlur = 0;
       frameRef.current = requestAnimationFrame(animate);
     };
