@@ -13,9 +13,9 @@ const Hero = () => {
   };
 
   const heroCards = [
-    { title: 'LOQIT', text: 'BLE anti-theft identity bond', icon: Wifi, status: 'Live demo' },
-    { title: 'Security Labs', text: 'Keylogger, scanner, Wireshark', icon: Terminal, status: 'Jan-Apr 2026' },
-    { title: 'TryHackMe', text: 'Top 5% with 77+ lab hours', icon: Radar, status: 'Ranked' },
+    { title: 'LOQIT', text: 'Web app + Android APK security product', icon: Wifi, status: 'Oct 2025-now' },
+    { title: 'AIIPLTech', text: 'Security+ and PenTest+ instructor-led training', icon: Terminal, status: 'May 2026-now' },
+    { title: 'TryHackMe', text: 'Top 5% globally across 100+ rooms', icon: Radar, status: '77+ hrs' },
   ];
 
   return (
@@ -34,7 +34,7 @@ const Hero = () => {
         <div>
           <p className="mb-5 text-sm font-black uppercase tracking-[0.18em] text-[var(--c-text)]">
             ROHIT ZORE <span className="text-[var(--c-accent-2)]">//</span>{' '}
-            <span className="text-[var(--c-text-muted)]">Cyber Security Enthusiast & Full-Stack Developer</span>
+            <span className="text-[var(--c-text-muted)]">Cybersecurity Analyst & Full Stack Developer</span>
           </p>
 
           <h1 className="max-w-2xl font-['Outfit'] text-[clamp(2.95rem,7.2vw,6.5rem)] font-black uppercase leading-[0.88] text-[var(--c-text)]">
@@ -43,7 +43,7 @@ const Hero = () => {
           </h1>
 
           <p className="mt-5 max-w-xl text-base leading-7 text-[var(--c-text-muted)] md:text-lg">
-            Mumbai-based builder mixing security research, mobile systems, and clean web experiences. I design products that look sharp, authenticate properly, and survive real-world misuse.
+            B.E. AI & Data Science student building secure full-stack products. I work across React Native, Supabase, REST APIs, OAuth/JWT, RBAC, vulnerability assessment, and network security labs.
           </p>
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -66,9 +66,9 @@ const Hero = () => {
               { text: 'React Native', cls: 'sm:left-0 sm:top-14' },
               { text: 'Supabase', cls: 'sm:left-4 sm:top-28' },
               { text: 'OAuth/JWT', cls: 'sm:left-[18rem] sm:top-6' },
-              { text: 'BLE', cls: 'sm:left-[19rem] sm:top-[5.4rem]' },
+              { text: 'RBAC', cls: 'sm:left-[19rem] sm:top-[5.4rem]' },
               { text: 'Wireshark', cls: 'sm:left-[18rem] sm:top-[9.7rem]' },
-              { text: 'Pentesting', cls: 'sm:left-[17rem] sm:top-[14rem]' },
+              { text: 'Python', cls: 'sm:left-[17rem] sm:top-[14rem]' },
             ].map((chip) => (
               <span key={chip.text} className={`tag skill-chip static sm:absolute ${chip.cls}`}>
                 {chip.text}
@@ -93,7 +93,7 @@ const Hero = () => {
             </div>
             <h3 className="font-['Outfit'] text-2xl font-black uppercase leading-none text-[var(--c-text)]">Threat-Aware UI</h3>
             <p className="mt-2 text-sm leading-5 text-[var(--c-text-muted)]">
-              Interfaces that make auth, device state, and recovery workflows visible.
+              Interfaces for authentication, device recovery, incident logging, and secure user workflows.
             </p>
           </div>
 
@@ -104,7 +104,7 @@ const Hero = () => {
               </div>
             </div>
             <h3 className="font-['Outfit'] text-2xl font-black uppercase leading-none text-[var(--c-text)]">Security Stack</h3>
-            <p className="mt-2 text-sm leading-5 text-[var(--c-text-muted)]">OAuth 2.0, JWT, BLE, Supabase, GIS recovery.</p>
+            <p className="mt-2 text-sm leading-5 text-[var(--c-text-muted)]">OAuth 2.0, JWT, RBAC, encrypted APIs, BLE, Supabase, GIS tracking.</p>
           </div>
 
           <div className="hero-card-row grid gap-4 md:grid-cols-3">

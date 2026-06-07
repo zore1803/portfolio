@@ -8,10 +8,10 @@ const Projects = () => {
     {
       id: 1,
       title: 'LOQIT',
-      subtitle: 'Anti-Theft Hardware Security Platform',
+      subtitle: 'Full Stack Anti-Theft Platform',
       description:
-        'A BLE-powered security ecosystem creating a hardware-identity bond between handsets and devices. Secure OAuth 2.0 and JWT authentication, device-level integrity, and a Law Enforcement Command Center with GIS-based recovery.',
-      tech: ['React Native', 'Expo', 'Supabase', 'BLE 2.0', 'OAuth', 'JWT'],
+        'A cross-platform security product with a web app, Android APK, BLE device binding, OAuth 2.0/JWT authentication, RBAC, Supabase PostgreSQL, encrypted APIs, and a Law Enforcement Command Center with GIS-based real-time tracking.',
+      tech: ['React Native', 'Expo', 'Supabase', 'PostgreSQL', 'REST APIs', 'RBAC'],
       github: 'https://github.com/zore1803',
       live: 'https://loqit-psi.vercel.app/',
       period: 'Oct 2025 - Present',
@@ -22,10 +22,10 @@ const Projects = () => {
     {
       id: 2,
       title: 'E-Guruji',
-      subtitle: 'Pandit-Customer Booking Platform',
+      subtitle: 'Full Stack Puja Booking Platform',
       description:
-        'Web app for booking pujas and connecting users with priests. JWT authentication, Razorpay payment gateway, and admin panel for managing users, services, and bookings.',
-      tech: ['JavaScript', 'HTML', 'JWT', 'Razorpay', 'MySQL'],
+        'A multi-role service booking web app built from scratch with user, priest, and admin roles, JWT authentication, RBAC, Razorpay payment validation, admin management, and normalized MySQL tables for users, priests, services, bookings, and payments.',
+      tech: ['JavaScript', 'HTML5', 'CSS3', 'JWT', 'Razorpay', 'MySQL'],
       github: 'https://github.com/zore1803/guruji-pooja-seva-portal',
       live: 'https://seva-profile-scribe.vercel.app/',
       period: 'Sep - Oct 2024',
@@ -34,13 +34,13 @@ const Projects = () => {
     },
     {
       id: 3,
-      title: 'Security Tools',
-      subtitle: 'Keylogger & Vulnerability Scanner',
+      title: 'Security Training',
+      subtitle: 'Assessment Tools & Analyst Labs',
       description:
-        'Built a keylogger and vulnerability scanner under mentor guidance at Elevate Labs. Hands-on Wireshark, firewalls, and password strength analysis.',
-      tech: ['Python', 'Wireshark', 'Nmap', 'Firewalls'],
+        'Hands-on cybersecurity work across AIIPLTech training and Elevate Labs internship: vulnerability assessment, Python keylogger and scanner development, Wireshark traffic analysis, firewall review, password policy analysis, and structured risk reporting.',
+      tech: ['Python', 'Wireshark', 'Risk Reports', 'Firewalls', 'CIA Triad'],
       github: 'https://github.com/zore1803',
-      period: 'Jan - Apr 2026',
+      period: 'Jan 2026 - Present',
       icon: ScanSearch,
       accent: 'var(--c-violet)',
     },
@@ -89,8 +89,8 @@ const Projects = () => {
           <div className="loqit-status">
             <Smartphone size={18} />
             <div>
-              <strong>Live Detection</strong>
-              <span>Scanning nearby devices...</span>
+              <strong>Web + APK</strong>
+              <span>Device recovery workflow active</span>
             </div>
           </div>
         </div>
@@ -175,7 +175,7 @@ const Projects = () => {
             </h2>
           </div>
           <p className="section-desc lg:justify-self-end">
-            Security products, booking systems, and tools shaped around authentication, recovery, deployment, and practical engineering.
+            Production-grade web and mobile builds shaped around authentication, database ownership, secure payments, device recovery, and practical security analysis.
           </p>
         </div>
 

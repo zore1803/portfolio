@@ -61,7 +61,7 @@ const Contact = () => {
             </h2>
           </div>
           <p className="section-desc">
-            Open to cyber security roles, pen-testing internships, full-stack collaborations, and product work with a real security angle.
+            Open to entry-level or internship roles in SOC operations, vulnerability assessment, security analysis, full-stack development, and React Native mobile products.
           </p>
         </div>
 

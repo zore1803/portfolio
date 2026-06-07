@@ -1,5 +1,5 @@
 import React from 'react';
-import { Award, Briefcase, Code2, Download, Eye, GraduationCap, ShieldCheck } from 'lucide-react';
+import { Award, Briefcase, Code2, Download, Eye, GraduationCap, ShieldCheck, Trophy } from 'lucide-react';
 
 const Resume = () => {
   const handleView = (file: string) => {
@@ -24,7 +24,7 @@ const Resume = () => {
       desc: 'Focused on cyber security internships, pen-testing learning, vulnerability analysis, tools, and labs.',
       icon: ShieldCheck,
       color: 'var(--c-accent)',
-      tags: ['TryHackMe', 'Pentesting', 'Wireshark', 'Python'],
+      tags: ['SOC', 'Vulnerability Assessment', 'Wireshark', 'Python'],
     },
     {
       title: 'Full-Stack Resume',
@@ -34,18 +34,29 @@ const Resume = () => {
       desc: 'Focused on React, React Native, Supabase, authentication, product workflows, and deployment.',
       icon: Code2,
       color: 'var(--c-accent-2)',
-      tags: ['React', 'Supabase', 'OAuth', 'Vercel'],
+      tags: ['React Native', 'Supabase', 'MySQL', 'REST APIs'],
     },
   ];
 
   const internships = [
     {
+      role: 'Cybersecurity Trainee',
+      company: 'AIIPLTech Pvt Ltd, Kharghar',
+      period: 'May 2026 - Present',
+      details: [
+        'Pursuing instructor-led CompTIA Security+ and PenTest+ training across threat landscape, malware analysis, and risk management.',
+        'Learning CIA Triad, attack surfaces, security controls, social engineering indicators, and mitigation strategies.',
+      ],
+      color: 'var(--c-violet)',
+    },
+    {
       role: 'Cyber Security Intern',
       company: 'Elevate Labs',
       period: 'Jan 2026 - Apr 2026',
       details: [
-        'Performed vulnerability checks; built a keylogger and vulnerability scanner.',
-        'Hands-on exposure to Wireshark, firewalls, and password strength analysis.',
+        'Conducted vulnerability assessments and documented weak credentials, open ports, improper access controls, and remediation steps.',
+        'Built Python-based keylogger and vulnerability scanner tools for authorized internal security testing.',
+        'Analyzed live network traffic with Wireshark and reviewed firewall/access control configurations.',
       ],
       color: 'var(--c-accent)',
     },
@@ -54,8 +65,8 @@ const Resume = () => {
       company: 'TryHackMe (Virtual)',
       period: 'Nov 2025 - Jan 2026',
       details: [
-        'Completed Cyber Security 101 (45+ hrs) and CompTIA Pentest+ (32+ hrs).',
-        'Covered networking, Linux, and Active Directory fundamentals.',
+        'Completed 77+ hours of structured security learning across Cyber Security 101 and CompTIA Pentest+ paths.',
+        'Ranked Top 5% globally across 100+ challenge rooms covering networking, Linux, Active Directory, cryptography, and web security.',
       ],
       color: 'var(--c-accent-2)',
     },
@@ -75,6 +86,13 @@ const Resume = () => {
     'AI Agent Architect',
     'Generative AI',
     'ADCAG',
+  ];
+
+  const achievements = [
+    'Top 5% globally on TryHackMe out of 3M+ users across 100+ rooms.',
+    'Treasurer - Computer Society of India (CSI), College Chapter.',
+    'College-level Volleyball Player - University Sports Team.',
+    'Languages: English, Marathi, Hindi.',
   ];
 
   return (
@@ -198,6 +216,22 @@ const Resume = () => {
               <span key={cert} className="tag">
                 {cert}
               </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="glass-panel reveal reveal-up mt-6 p-6">
+          <div className="mb-5 flex items-center gap-3">
+            <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-[var(--c-accent-3)]/15 text-[var(--c-accent-3)]">
+              <Trophy size={20} />
+            </span>
+            <h3 className="font-['Outfit'] text-2xl font-black uppercase leading-none text-[var(--c-text)]">Achievements & Activities</h3>
+          </div>
+          <div className="grid gap-3 md:grid-cols-2">
+            {achievements.map((item) => (
+              <div key={item} className="rounded-lg border border-[var(--c-border)] bg-white/5 p-4 text-sm font-bold leading-6 text-[var(--c-text-muted)]">
+                {item}
+              </div>
             ))}
           </div>
         </div>

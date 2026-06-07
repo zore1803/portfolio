@@ -9,20 +9,20 @@ const Skills = () => {
       icon: Shield,
       color: 'var(--c-accent)',
       items: [
-        { icon: Network, name: 'Networking', detail: 'routing, packets, protocols' },
-        { icon: Radar, name: 'Wireshark / Nmap', detail: 'traffic and target analysis' },
-        { icon: KeyRound, name: 'Auth Security', detail: 'JWT, OAuth 2.0, passwords' },
+        { icon: Network, name: 'Assessment', detail: 'vulnerability scanning, reports' },
+        { icon: Radar, name: 'Network Security', detail: 'Wireshark, TCP/IP, firewalls' },
+        { icon: KeyRound, name: 'Threat & Risk', detail: 'CIA Triad, malware, OWASP Top 10' },
       ],
     },
     {
-      title: 'Frontend Stack',
+      title: 'Full Stack Build',
       className: 'skills-panel-right',
       icon: Code2,
       color: 'var(--c-accent-2)',
       items: [
-        { icon: Braces, name: 'React / TypeScript', detail: 'component-driven UI' },
-        { icon: Smartphone, name: 'React Native', detail: 'Expo mobile builds' },
-        { icon: Database, name: 'Supabase', detail: 'data, auth, edge APIs' },
+        { icon: Braces, name: 'JavaScript / UI', detail: 'ES6+, HTML5, CSS3, responsive UI' },
+        { icon: Smartphone, name: 'React Native', detail: 'Expo web and Android APK' },
+        { icon: Database, name: 'Databases', detail: 'MySQL, Supabase PostgreSQL, CRUD' },
       ],
     },
     {
@@ -31,8 +31,8 @@ const Skills = () => {
       icon: Wrench,
       color: 'var(--c-violet)',
       items: [
-        { icon: Terminal, name: 'Python / Linux', detail: 'scripts, labs, automation' },
-        { icon: GitBranch, name: 'Git / Vercel', detail: 'versioning and deployment' },
+        { icon: Terminal, name: 'Python / Linux', detail: 'scripting, automation, Ubuntu' },
+        { icon: GitBranch, name: 'Tools', detail: 'Git, GitHub, Expo, Razorpay' },
       ],
     },
   ];
@@ -40,9 +40,9 @@ const Skills = () => {
   const floatingSkills = [
     { text: 'BLE', cls: 'left-[7%] top-[45%]' },
     { text: 'JWT', cls: 'left-[33%] top-[27%]' },
-    { text: 'OAuth', cls: 'right-[35%] top-[24%]' },
+    { text: 'RBAC', cls: 'right-[35%] top-[24%]' },
     { text: 'MySQL', cls: 'right-[10%] top-[46%]' },
-    { text: 'Firewalls', cls: 'left-[29%] bottom-[19%]' },
+    { text: 'OWASP', cls: 'left-[29%] bottom-[19%]' },
     { text: 'REST APIs', cls: 'right-[30%] bottom-[16%]' },
   ];
 
@@ -57,7 +57,7 @@ const Skills = () => {
             </h2>
           </div>
           <p className="section-desc">
-            Not a scoreboard of percentages. This is the stack I connect when I build secure apps, inspect systems, and ship production-ready interfaces.
+            The stack from my resumes: secure full-stack development, analyst-style assessment work, database ownership, authentication, and practical tooling.
           </p>
         </div>
 
@@ -121,9 +121,9 @@ const Skills = () => {
             <img src="/lovable-uploads/dca1d829-b131-45a7-8d52-3cf6cd1550d2.png" alt="Rohit Zore" />
           </div>
           <div className="skills-avatar-tags">
-            <span className="tag">Featured Skill</span>
-            <span className="tag">Secure UI</span>
-            <span className="tag">3D Logic</span>
+            <span className="tag">Top 5% THM</span>
+            <span className="tag">100+ Rooms</span>
+            <span className="tag">77+ Hours</span>
           </div>
         </div>
       </div>
