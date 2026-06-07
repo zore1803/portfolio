@@ -99,7 +99,7 @@ const Contact = () => {
           </div>
 
           <div className="glass-panel reveal reveal-up p-6 md:p-8">
-            <h3 className="mb-6 flex items-center gap-3 font-['Outfit'] text-3xl font-black uppercase leading-none text-[var(--c-text)]">
+            <h3 className="mb-6 flex items-center gap-3 font-['Outfit'] text-2xl font-black uppercase leading-none text-[var(--c-text)]">
               <Send size={22} className="text-[var(--c-accent-2)]" />
               Send a Message
             </h3>

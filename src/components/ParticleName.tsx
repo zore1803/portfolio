@@ -13,19 +13,23 @@ type Particle = {
 };
 
 const randomBetween = (min: number, max: number) => Math.random() * (max - min) + min;
-const DARK_COLORS = ['#00f5ff', '#00e5cc', '#3d8eff', '#60efff', '#aac7ff', '#e0eaff'];
+const DARK_COLORS = ['#00f5ff', '#00e5cc', '#3D8EFF', '#60efff', '#aac7ff', '#e0eaff'];
 const LIGHT_COLORS = ['#0d2d6e', '#1e40af', '#0e7490', '#1a5276', '#155e75', '#334155'];
 const MOUSE_RADIUS = 90;
 const SPRING = 0.045;
 const DAMPING = 0.82;
+
+const FONT_FAMILY = 'Inter, "Segoe UI", Arial, sans-serif';
+
 const applyLetterSpacing = (ctx: CanvasRenderingContext2D, spacing: number) => {
   (ctx as CanvasRenderingContext2D & { letterSpacing?: string }).letterSpacing = `${spacing}px`;
 };
+
 const measureSpacedText = (ctx: CanvasRenderingContext2D, value: string, spacing: number) =>
   value.split('').reduce((total, char, index) => total + ctx.measureText(char).width + (index ? spacing : 0), 0);
+
 const drawSpacedText = (ctx: CanvasRenderingContext2D, value: string, x: number, y: number, spacing: number) => {
   let cursor = x - measureSpacedText(ctx, value, spacing) / 2;
-
   for (const char of value) {
     ctx.fillText(char, cursor, y);
     cursor += ctx.measureText(char).width + spacing;
@@ -63,15 +67,22 @@ const ParticleName = ({ text = 'ROHIT ZORE' }: { text?: string }) => {
       offscreen.height = height;
       offCtx.clearRect(0, 0, width, height);
 
-      const letterSpacing = width < 520 ? 2 : 5;
+      // Desktop: 22px letter-spacing, Mobile (<520): 8px
+      const baseLetterSpacing = width < 520 ? 8 : 22;
+      let letterSpacing = baseLetterSpacing;
       let fontSize = Math.min(width / 5.85, height * 0.76);
-      offCtx.font = `900 ${fontSize}px Inter, Segoe UI, Outfit, Arial, sans-serif`;
+
+      // Auto-scale: shrink fontSize and letterSpacing proportionally until text fits
+      offCtx.font = `900 ${fontSize}px ${FONT_FAMILY}`;
       applyLetterSpacing(offCtx, letterSpacing);
-      while (measureSpacedText(offCtx, text, letterSpacing) > width * 0.9 && fontSize > 24) {
+      while (measureSpacedText(offCtx, text, letterSpacing) > width * 0.95 && fontSize > 18) {
+        const ratio = (fontSize - 2) / fontSize;
         fontSize -= 2;
-        offCtx.font = `900 ${fontSize}px Inter, Segoe UI, Outfit, Arial, sans-serif`;
+        letterSpacing = Math.max(1, letterSpacing * ratio);
+        offCtx.font = `900 ${fontSize}px ${FONT_FAMILY}`;
         applyLetterSpacing(offCtx, letterSpacing);
       }
+
       offCtx.textAlign = 'left';
       offCtx.textBaseline = 'middle';
       offCtx.fillStyle = '#ffffff';
@@ -108,7 +119,8 @@ const ParticleName = ({ text = 'ROHIT ZORE' }: { text?: string }) => {
           hy: target.y,
           vx: 0,
           vy: 0,
-          size: randomBetween(width < 520 ? 0.9 : 1.1, width < 520 ? 1.9 : 2.8),
+          // Core particle radius: 1.2px to 2.8px
+          size: randomBetween(width < 520 ? 0.9 : 1.2, width < 520 ? 1.9 : 2.8),
           color: palette[index % palette.length],
           alpha: randomBetween(0.82, 1),
         };
@@ -131,9 +143,11 @@ const ParticleName = ({ text = 'ROHIT ZORE' }: { text?: string }) => {
         const dx = particle.hx - particle.x;
         const dy = particle.hy - particle.y;
 
+        // Spring force pulls particle back to home position
         particle.vx += dx * SPRING;
         particle.vy += dy * SPRING;
 
+        // Mouse repulsion: force = 7000 / (distance² + 200)
         if (mouseRef.current.active) {
           const mx = particle.x - mouseRef.current.x;
           const my = particle.y - mouseRef.current.y;
@@ -146,6 +160,7 @@ const ParticleName = ({ text = 'ROHIT ZORE' }: { text?: string }) => {
           }
         }
 
+        // Damping (friction) applied every frame
         particle.vx *= DAMPING;
         particle.vy *= DAMPING;
         particle.x += particle.vx;
@@ -154,7 +169,9 @@ const ParticleName = ({ text = 'ROHIT ZORE' }: { text?: string }) => {
         const displacement = Math.min(1, Math.hypot(particle.x - particle.hx, particle.y - particle.hy) / 72);
         const bloom = isLight ? 0 : displacement;
 
+        // Blooming glow layers (dark mode only)
         if (!isLight) {
+          // Outer glow: radius 4x–7x of particle size
           ctx.globalAlpha = particle.alpha * (0.03 + bloom * 0.2);
           ctx.fillStyle = particle.color;
           ctx.shadowColor = particle.color;
@@ -163,6 +180,7 @@ const ParticleName = ({ text = 'ROHIT ZORE' }: { text?: string }) => {
           ctx.arc(particle.x, particle.y, particle.size * (4 + bloom * 3), 0, Math.PI * 2);
           ctx.fill();
 
+          // Mid glow: radius 2x–3.5x of particle size
           ctx.globalAlpha = particle.alpha * (0.08 + bloom * 0.3);
           ctx.shadowBlur = 2 + bloom * 9;
           ctx.beginPath();
@@ -170,6 +188,7 @@ const ParticleName = ({ text = 'ROHIT ZORE' }: { text?: string }) => {
           ctx.fill();
         }
 
+        // Core particle
         ctx.beginPath();
         ctx.globalAlpha = particle.alpha;
         ctx.fillStyle = particle.color;
@@ -223,3 +242,4 @@ const ParticleName = ({ text = 'ROHIT ZORE' }: { text?: string }) => {
 };
 
 export default ParticleName;
+

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BriefcaseBusiness, FileText, Home, Mail, Menu, Moon, Shield, Sun, User, X, Zap } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { useTheme } from '@/hooks/useThemeContext';
 
 const navItems = [
@@ -46,14 +47,19 @@ const Navbar = () => {
             <span className="theme-icon-button">
               <Shield size={20} className="text-[var(--c-accent)]" />
             </span>
-            <span className="hidden text-left sm:block">
+            <motion.span
+              className="hidden text-left sm:block"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+            >
               <span className="block font-['Outfit'] text-sm font-black uppercase tracking-wide text-[var(--c-text)]">
                 Rohit Zore
               </span>
               <span className="block text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--c-text-muted)]">
                 Cyber Security // Full Stack
               </span>
-            </span>
+            </motion.span>
           </button>
 
           <div className="mobile-nav">

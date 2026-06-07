@@ -69,7 +69,7 @@ const Resume = () => {
                 </span>
                 <div className="min-w-0 flex-1">
                   <span className="text-xs font-black uppercase tracking-widest text-[var(--c-text-muted)]">{resume.label}</span>
-                  <h3 className="mt-1 font-['Outfit'] text-2xl font-black uppercase leading-none text-[var(--c-text)]">
+                  <h3 className="mt-1 font-['Outfit'] text-xl font-black uppercase leading-none text-[var(--c-text)]">
                     {resume.title}
                   </h3>
                   <p className="mt-3 text-sm leading-6 text-[var(--c-text-muted)]">{resume.desc}</p>

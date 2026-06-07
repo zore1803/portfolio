@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowDown, ArrowUpRight, Github, Linkedin, Mail, Radar, ShieldCheck, Terminal, Wifi } from 'lucide-react';
-import ParticleName from './ParticleName';
+import { motion } from 'framer-motion';
 
 const Hero = () => {
   const [mounted, setMounted] = useState(false);
@@ -38,7 +38,15 @@ const Hero = () => {
             <span className="text-[var(--c-text-muted)]">Cybersecurity Analyst & Full Stack Developer</span>
           </p>
 
-          <ParticleName text="ROHIT ZORE" />
+          <motion.div
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            <h1 className="font-['Outfit'] text-4xl font-black uppercase leading-none text-[var(--c-text)] sm:text-5xl lg:text-6xl">
+              ROHIT ZORE
+            </h1>
+          </motion.div>
 
           <p className="mt-5 max-w-xl text-base leading-7 text-[var(--c-text-muted)] md:text-lg">
             B.E. AI & Data Science student building secure full-stack products. I work across React Native, Supabase, REST APIs, OAuth/JWT, RBAC, vulnerability assessment, and network security labs.
@@ -89,7 +97,7 @@ const Hero = () => {
                 <span className="rounded bg-white/10" />
               </div>
             </div>
-            <h3 className="font-['Outfit'] text-2xl font-black uppercase leading-none text-[var(--c-text)]">Threat-Aware UI</h3>
+            <h3 className="font-['Outfit'] text-xl font-black uppercase leading-none text-[var(--c-text)]">Threat-Aware UI</h3>
             <p className="mt-2 text-sm leading-5 text-[var(--c-text-muted)]">
               Interfaces for authentication, device recovery, incident logging, and secure user workflows.
             </p>
@@ -101,7 +109,7 @@ const Hero = () => {
                 <ShieldCheck size={70} className="text-[var(--c-accent)] drop-shadow-[0_0_18px_rgba(96,255,241,0.65)]" />
               </div>
             </div>
-            <h3 className="font-['Outfit'] text-2xl font-black uppercase leading-none text-[var(--c-text)]">Security Stack</h3>
+            <h3 className="font-['Outfit'] text-xl font-black uppercase leading-none text-[var(--c-text)]">Security Stack</h3>
             <p className="mt-2 text-sm leading-5 text-[var(--c-text-muted)]">OAuth 2.0, JWT, RBAC, encrypted APIs, BLE, Supabase, GIS tracking.</p>
           </div>
 

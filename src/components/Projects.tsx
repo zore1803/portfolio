@@ -195,7 +195,7 @@ const Projects = () => {
                     <activeProject.icon size={22} />
                   </span>
                   <div>
-                    <h3 className="font-['Outfit'] text-4xl font-black uppercase leading-none text-[var(--c-text)]">
+                    <h3 className="font-['Outfit'] text-3xl font-black uppercase leading-none text-[var(--c-text)]">
                       {activeProject.title}
                     </h3>
                     <p className="text-sm text-[var(--c-text-muted)]">{activeProject.subtitle}</p>
@@ -244,7 +244,7 @@ const Projects = () => {
                   </span>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center justify-between gap-3">
-                      <h4 className="truncate font-['Outfit'] text-xl font-black uppercase leading-none text-[var(--c-text)]">{project.title}</h4>
+                      <h4 className="truncate font-['Outfit'] text-lg font-black uppercase leading-none text-[var(--c-text)]">{project.title}</h4>
                       {project.featured && (
                         <span className="rounded bg-[var(--c-accent-2)]/20 px-2 py-1 text-[10px] font-black uppercase tracking-wider text-[var(--c-accent-3)]">
                           Featured
