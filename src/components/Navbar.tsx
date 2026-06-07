@@ -7,7 +7,8 @@ const navItems = [
   { label: 'About', id: 'about', icon: User },
   { label: 'Projects', id: 'projects', icon: BriefcaseBusiness },
   { label: 'Skills', id: 'skills', icon: Zap },
-  { label: 'Resume', id: 'experience', icon: FileText },
+  { label: 'Experience', id: 'career', icon: BriefcaseBusiness },
+  { label: 'Resume', id: 'resume', icon: FileText },
   { label: 'Contact', id: 'contact', icon: Mail },
 ];
 
