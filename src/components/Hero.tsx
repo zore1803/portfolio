@@ -55,9 +55,11 @@ const Hero = () => {
             </button>
           </div>
 
-          <div className="relative mt-8 flex min-h-[250px] flex-col items-center justify-center gap-4 sm:block">
-            <div className="avatar-ring sm:absolute sm:left-20 sm:top-2">
-              <img src="/lovable-uploads/dca1d829-b131-45a7-8d52-3cf6cd1550d2.png" alt="Rohit Zore" />
+          <div className="hero-avatar-cloud relative mt-8 flex min-h-[250px] flex-col items-center justify-center gap-4 sm:block">
+            <div className="hero-avatar-frame">
+              <div className="avatar-ring sm:absolute sm:left-20 sm:top-2">
+                <img src="/lovable-uploads/dca1d829-b131-45a7-8d52-3cf6cd1550d2.png" alt="Rohit Zore" />
+              </div>
             </div>
 
             {[

@@ -1,19 +1,42 @@
 import React from 'react';
-import { Award, Briefcase, Download, Eye, GraduationCap } from 'lucide-react';
+import { Award, Briefcase, Code2, Download, Eye, GraduationCap, ShieldCheck } from 'lucide-react';
 
 const Resume = () => {
-  const handleView = () => {
-    window.open('/Rohit_Resume.pdf', '_blank');
+  const handleView = (file: string) => {
+    window.open(file, '_blank');
   };
 
-  const handleDownload = () => {
+  const handleDownload = (file: string, downloadName: string) => {
     const link = document.createElement('a');
-    link.href = '/Rohit_Resume.pdf';
-    link.download = 'Rohit_Zore_Resume.pdf';
+    link.href = file;
+    link.download = downloadName;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
+
+  const resumes = [
+    {
+      title: 'Cybersecurity Resume',
+      label: 'Security Roles',
+      file: '/Rohit_Zore_Cybersecurity_Resume.pdf',
+      downloadName: 'Rohit_Zore_Cybersecurity_Resume.pdf',
+      desc: 'Focused on cyber security internships, pen-testing learning, vulnerability analysis, tools, and labs.',
+      icon: ShieldCheck,
+      color: 'var(--c-accent)',
+      tags: ['TryHackMe', 'Pentesting', 'Wireshark', 'Python'],
+    },
+    {
+      title: 'Full-Stack Resume',
+      label: 'Developer Roles',
+      file: '/Rohit_Zore_FullStack_Resume.pdf',
+      downloadName: 'Rohit_Zore_FullStack_Resume.pdf',
+      desc: 'Focused on React, React Native, Supabase, authentication, product workflows, and deployment.',
+      icon: Code2,
+      color: 'var(--c-accent-2)',
+      tags: ['React', 'Supabase', 'OAuth', 'Vercel'],
+    },
+  ];
 
   const internships = [
     {
@@ -57,21 +80,55 @@ const Resume = () => {
   return (
     <section id="experience" className="section-wrap">
       <div className="section-inner">
-        <div className="mb-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+        <div className="mb-8 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
             <p className="section-label mb-4">Resume</p>
             <h2 className="section-heading">
               Training & <span className="warm-text">Education</span>
             </h2>
           </div>
-          <div className="flex flex-col gap-3 sm:flex-row lg:justify-self-end">
-            <button className="btn-outline" onClick={handleView}>
-              <Eye size={16} /> View Resume
-            </button>
-            <button className="btn-primary" onClick={handleDownload}>
-              <Download size={16} /> Download
-            </button>
-          </div>
+          <p className="section-desc lg:justify-self-end">
+            Choose the resume that matches the role: security-first work or full-stack product development.
+          </p>
+        </div>
+
+        <div className="mb-6 grid gap-4 lg:grid-cols-2">
+          {resumes.map((resume) => (
+            <article key={resume.title} className="glass-panel reveal reveal-up p-5 md:p-6">
+              <div className="flex items-start gap-4">
+                <span
+                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg"
+                  style={{ background: `${resume.color}22`, color: resume.color }}
+                >
+                  <resume.icon size={22} />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <span className="text-xs font-black uppercase tracking-widest text-[var(--c-text-muted)]">{resume.label}</span>
+                  <h3 className="mt-1 font-['Outfit'] text-2xl font-black uppercase leading-none text-[var(--c-text)]">
+                    {resume.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-[var(--c-text-muted)]">{resume.desc}</p>
+                </div>
+              </div>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {resume.tags.map((tag) => (
+                  <span key={tag} className="tag">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                <button className="btn-outline" onClick={() => handleView(resume.file)}>
+                  <Eye size={16} /> View
+                </button>
+                <button className="btn-primary" onClick={() => handleDownload(resume.file, resume.downloadName)}>
+                  <Download size={16} /> Download
+                </button>
+              </div>
+            </article>
+          ))}
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2">
