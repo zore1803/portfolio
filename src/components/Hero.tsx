@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowDown, ArrowUpRight, Github, Linkedin, Mail, Radar, ShieldCheck, Terminal, Wifi } from 'lucide-react';
+import ParticleName from './ParticleName';
 
 const Hero = () => {
   const [mounted, setMounted] = useState(false);
@@ -37,10 +38,7 @@ const Hero = () => {
             <span className="text-[var(--c-text-muted)]">Cybersecurity Analyst & Full Stack Developer</span>
           </p>
 
-          <h1 className="max-w-2xl font-['Outfit'] text-[clamp(2.95rem,7.2vw,6.5rem)] font-black uppercase leading-[0.88] text-[var(--c-text)]">
-            <span className="gradient-text">Rohit</span>{' '}
-            <span className="warm-text">Zore</span>
-          </h1>
+          <ParticleName text="ROHIT ZORE" />
 
           <p className="mt-5 max-w-xl text-base leading-7 text-[var(--c-text-muted)] md:text-lg">
             B.E. AI & Data Science student building secure full-stack products. I work across React Native, Supabase, REST APIs, OAuth/JWT, RBAC, vulnerability assessment, and network security labs.
