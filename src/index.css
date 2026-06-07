@@ -177,6 +177,16 @@
   50% { transform: translate3d(0, -8px, 0); }
 }
 
+@keyframes menu-drop {
+  from { opacity: 0; transform: translateY(-10px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes menu-item-rise {
+  from { opacity: 0; transform: translateX(10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
 .reveal {
   opacity: 0;
   transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
@@ -218,6 +228,29 @@
   overflow: hidden;
   scroll-margin-top: 5.75rem;
   padding: 6.5rem 1.5rem;
+}
+
+.section-wrap:not(.hero-section) .section-label,
+.section-wrap:not(.hero-section) .section-heading,
+.section-wrap:not(.hero-section) .section-desc {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.62s ease, transform 0.62s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.section-wrap:not(.hero-section).section-active .section-label,
+.section-wrap:not(.hero-section).section-active .section-heading,
+.section-wrap:not(.hero-section).section-active .section-desc {
+  opacity: 1;
+  transform: none;
+}
+
+.section-wrap:not(.hero-section).section-active .section-heading {
+  transition-delay: 0.08s;
+}
+
+.section-wrap:not(.hero-section).section-active .section-desc {
+  transition-delay: 0.16s;
 }
 
 .section-inner {
@@ -669,6 +702,13 @@
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
+.btn-primary svg,
+.btn-outline svg,
+.theme-icon-button svg,
+.theme-floating-toggle svg {
+  transition: transform 0.24s ease;
+}
+
 .btn-primary {
   color: #111827;
   border: 1px solid rgba(255, 216, 154, 0.7);
@@ -685,6 +725,11 @@
 .btn-primary:hover,
 .btn-outline:hover {
   transform: translateY(-3px);
+}
+
+.btn-primary:hover svg,
+.btn-outline:hover svg {
+  transform: translateX(2px) translateY(-1px);
 }
 
 .btn-outline:hover {
@@ -713,6 +758,11 @@
   color: var(--c-accent-3);
   border-color: rgba(255, 210, 145, 0.62);
   transform: translateY(-1px);
+}
+
+.theme-icon-button:hover svg,
+.theme-floating-toggle:hover svg {
+  transform: rotate(8deg) scale(1.06);
 }
 
 .theme-floating-toggle {
@@ -872,6 +922,21 @@
 
 .mobile-nav {
   display: none;
+}
+
+.mobile-menu-panel {
+  transform-origin: top center;
+  animation: menu-drop 0.24s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.mobile-menu-panel button {
+  opacity: 0;
+  animation: menu-item-rise 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.mobile-menu-panel button:hover {
+  transform: translateX(3px);
 }
 
 .avatar-ring {

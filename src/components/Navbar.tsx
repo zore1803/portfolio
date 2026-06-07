@@ -69,14 +69,15 @@ const Navbar = () => {
         </div>
 
         {isOpen && (
-          <div className="mobile-nav mx-auto mt-3 max-w-7xl rounded-lg border border-[var(--c-border)] bg-[var(--c-surface-solid)]/95 p-2 shadow-2xl backdrop-blur-xl">
-            {navItems.map((item) => (
+          <div className="mobile-nav mobile-menu-panel mx-auto mt-3 max-w-7xl rounded-lg border border-[var(--c-border)] bg-[var(--c-surface-solid)]/95 p-2 shadow-2xl backdrop-blur-xl">
+            {navItems.map((item, index) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className={`flex w-full items-center gap-3 rounded-md px-3 py-3 text-sm font-black uppercase ${
                   activeSection === item.id ? 'bg-[var(--c-accent-2)] text-[#111827]' : 'text-[var(--c-text-muted)]'
                 }`}
+                style={{ animationDelay: `${index * 0.035}s` }}
               >
                 <item.icon size={16} />
                 {item.label}
